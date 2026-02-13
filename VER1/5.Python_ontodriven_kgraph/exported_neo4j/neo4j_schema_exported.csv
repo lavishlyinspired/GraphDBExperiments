@@ -1,0 +1,494 @@
+nodes,relationships
+"[
+  {
+    identity: -147,
+    labels: [ObjectProperty],
+    properties: {
+      indexes: [],
+      name: ObjectProperty,
+      constraints: []
+    },
+    elementId: -147
+  },
+  {
+    identity: -143,
+    labels: [_n10sValidatorConfig],
+    properties: {
+      indexes: [],
+      name: _n10sValidatorConfig,
+      constraints: []
+    },
+    elementId: -143
+  },
+  {
+    identity: -150,
+    labels: [CancerType],
+    properties: {
+      indexes: [],
+      name: CancerType,
+      constraints: []
+    },
+    elementId: -150
+  },
+  {
+    identity: -140,
+    labels: [Article],
+    properties: {
+      indexes: [body],
+      name: Article,
+      constraints: [Constraint( id=1, name='article_uri', type='NODE PROPERTY UNIQUENESS', schema=(:Article {uri}), ownedIndex=0 )]
+    },
+    elementId: -140
+  },
+  {
+    identity: -141,
+    labels: [Resource],
+    properties: {
+      indexes: [],
+      name: Resource,
+      constraints: [Constraint( id=15, name='n10s_unique_uri', type='NODE PROPERTY UNIQUENESS', schema=(:Resource {uri}), ownedIndex=13 )]
+    },
+    elementId: -141
+  },
+  {
+    identity: -142,
+    labels: [Patient],
+    properties: {
+      indexes: [],
+      name: Patient,
+      constraints: []
+    },
+    elementId: -142
+  },
+  {
+    identity: -156,
+    labels: [TreatedPatient],
+    properties: {
+      indexes: [],
+      name: TreatedPatient,
+      constraints: []
+    },
+    elementId: -156
+  },
+  {
+    identity: -157,
+    labels: [SymptomaticPatient],
+    properties: {
+      indexes: [],
+      name: SymptomaticPatient,
+      constraints: []
+    },
+    elementId: -157
+  },
+  {
+    identity: -151,
+    labels: [Treatment],
+    properties: {
+      indexes: [],
+      name: Treatment,
+      constraints: []
+    },
+    elementId: -151
+  },
+  {
+    identity: -144,
+    labels: [LungCancer],
+    properties: {
+      indexes: [],
+      name: LungCancer,
+      constraints: []
+    },
+    elementId: -144
+  },
+  {
+    identity: -155,
+    labels: [_Relationship],
+    properties: {
+      indexes: [],
+      name: _Relationship,
+      constraints: []
+    },
+    elementId: -155
+  },
+  {
+    identity: -148,
+    labels: [Stage],
+    properties: {
+      indexes: [],
+      name: Stage,
+      constraints: []
+    },
+    elementId: -148
+  },
+  {
+    identity: -145,
+    labels: [Class],
+    properties: {
+      indexes: [],
+      name: Class,
+      constraints: []
+    },
+    elementId: -145
+  },
+  {
+    identity: -152,
+    labels: [Hospital],
+    properties: {
+      indexes: [],
+      name: Hospital,
+      constraints: []
+    },
+    elementId: -152
+  },
+  {
+    identity: -139,
+    labels: [_GraphConfig],
+    properties: {
+      indexes: [],
+      name: _GraphConfig,
+      constraints: []
+    },
+    elementId: -139
+  },
+  {
+    identity: -149,
+    labels: [Symptom],
+    properties: {
+      indexes: [],
+      name: Symptom,
+      constraints: []
+    },
+    elementId: -149
+  },
+  {
+    identity: -153,
+    labels: [CancerPatient],
+    properties: {
+      indexes: [],
+      name: CancerPatient,
+      constraints: []
+    },
+    elementId: -153
+  },
+  {
+    identity: -146,
+    labels: [DatatypeProperty],
+    properties: {
+      indexes: [],
+      name: DatatypeProperty,
+      constraints: []
+    },
+    elementId: -146
+  },
+  {
+    identity: -154,
+    labels: [_Category],
+    properties: {
+      indexes: [],
+      name: _Category,
+      constraints: []
+    },
+    elementId: -154
+  }
+]","[
+  {
+    identity: -159,
+    start: -155,
+    end: -154,
+    type: _from,
+    properties: {
+      name: _from
+    },
+    elementId: -159,
+    startNodeElementId: -155,
+    endNodeElementId: -154
+  },
+  {
+    identity: -156,
+    start: -157,
+    end: -151,
+    type: receivesTreatment,
+    properties: {
+      name: receivesTreatment
+    },
+    elementId: -156,
+    startNodeElementId: -157,
+    endNodeElementId: -151
+  },
+  {
+    identity: -155,
+    start: -156,
+    end: -151,
+    type: receivesTreatment,
+    properties: {
+      name: receivesTreatment
+    },
+    elementId: -155,
+    startNodeElementId: -156,
+    endNodeElementId: -151
+  },
+  {
+    identity: -154,
+    start: -153,
+    end: -151,
+    type: receivesTreatment,
+    properties: {
+      name: receivesTreatment
+    },
+    elementId: -154,
+    startNodeElementId: -153,
+    endNodeElementId: -151
+  },
+  {
+    identity: -153,
+    start: -142,
+    end: -151,
+    type: receivesTreatment,
+    properties: {
+      name: receivesTreatment
+    },
+    elementId: -153,
+    startNodeElementId: -142,
+    endNodeElementId: -151
+  },
+  {
+    identity: -137,
+    start: -147,
+    end: -145,
+    type: range,
+    properties: {
+      name: range
+    },
+    elementId: -137,
+    startNodeElementId: -147,
+    endNodeElementId: -145
+  },
+  {
+    identity: -158,
+    start: -144,
+    end: -145,
+    type: INSTANCE_OF,
+    properties: {
+      name: INSTANCE_OF
+    },
+    elementId: -158,
+    startNodeElementId: -144,
+    endNodeElementId: -145
+  },
+  {
+    identity: -141,
+    start: -156,
+    end: -144,
+    type: hasDiagnosis,
+    properties: {
+      name: hasDiagnosis
+    },
+    elementId: -141,
+    startNodeElementId: -156,
+    endNodeElementId: -144
+  },
+  {
+    identity: -139,
+    start: -142,
+    end: -144,
+    type: hasDiagnosis,
+    properties: {
+      name: hasDiagnosis
+    },
+    elementId: -139,
+    startNodeElementId: -142,
+    endNodeElementId: -144
+  },
+  {
+    identity: -140,
+    start: -153,
+    end: -144,
+    type: hasDiagnosis,
+    properties: {
+      name: hasDiagnosis
+    },
+    elementId: -140,
+    startNodeElementId: -153,
+    endNodeElementId: -144
+  },
+  {
+    identity: -142,
+    start: -157,
+    end: -144,
+    type: hasDiagnosis,
+    properties: {
+      name: hasDiagnosis
+    },
+    elementId: -142,
+    startNodeElementId: -157,
+    endNodeElementId: -144
+  },
+  {
+    identity: -144,
+    start: -153,
+    end: -149,
+    type: hasSymptom,
+    properties: {
+      name: hasSymptom
+    },
+    elementId: -144,
+    startNodeElementId: -153,
+    endNodeElementId: -149
+  },
+  {
+    identity: -145,
+    start: -156,
+    end: -149,
+    type: hasSymptom,
+    properties: {
+      name: hasSymptom
+    },
+    elementId: -145,
+    startNodeElementId: -156,
+    endNodeElementId: -149
+  },
+  {
+    identity: -143,
+    start: -142,
+    end: -149,
+    type: hasSymptom,
+    properties: {
+      name: hasSymptom
+    },
+    elementId: -143,
+    startNodeElementId: -142,
+    endNodeElementId: -149
+  },
+  {
+    identity: -146,
+    start: -157,
+    end: -149,
+    type: hasSymptom,
+    properties: {
+      name: hasSymptom
+    },
+    elementId: -146,
+    startNodeElementId: -157,
+    endNodeElementId: -149
+  },
+  {
+    identity: -138,
+    start: -147,
+    end: -145,
+    type: domain,
+    properties: {
+      name: domain
+    },
+    elementId: -138,
+    startNodeElementId: -147,
+    endNodeElementId: -145
+  },
+  {
+    identity: -150,
+    start: -156,
+    end: -152,
+    type: treatedAt,
+    properties: {
+      name: treatedAt
+    },
+    elementId: -150,
+    startNodeElementId: -156,
+    endNodeElementId: -152
+  },
+  {
+    identity: -148,
+    start: -142,
+    end: -152,
+    type: treatedAt,
+    properties: {
+      name: treatedAt
+    },
+    elementId: -148,
+    startNodeElementId: -142,
+    endNodeElementId: -152
+  },
+  {
+    identity: -151,
+    start: -157,
+    end: -152,
+    type: treatedAt,
+    properties: {
+      name: treatedAt
+    },
+    elementId: -151,
+    startNodeElementId: -157,
+    endNodeElementId: -152
+  },
+  {
+    identity: -149,
+    start: -153,
+    end: -152,
+    type: treatedAt,
+    properties: {
+      name: treatedAt
+    },
+    elementId: -149,
+    startNodeElementId: -153,
+    endNodeElementId: -152
+  },
+  {
+    identity: -160,
+    start: -155,
+    end: -154,
+    type: _to,
+    properties: {
+      name: _to
+    },
+    elementId: -160,
+    startNodeElementId: -155,
+    endNodeElementId: -154
+  },
+  {
+    identity: -136,
+    start: -140,
+    end: -144,
+    type: ABOUT,
+    properties: {
+      name: ABOUT
+    },
+    elementId: -136,
+    startNodeElementId: -140,
+    endNodeElementId: -144
+  },
+  {
+    identity: -147,
+    start: -144,
+    end: -150,
+    type: hasType,
+    properties: {
+      name: hasType
+    },
+    elementId: -147,
+    startNodeElementId: -144,
+    endNodeElementId: -150
+  },
+  {
+    identity: -157,
+    start: -140,
+    end: -151,
+    type: REFERS_TO,
+    properties: {
+      name: REFERS_TO
+    },
+    elementId: -157,
+    startNodeElementId: -140,
+    endNodeElementId: -151
+  },
+  {
+    identity: -152,
+    start: -144,
+    end: -148,
+    type: hasStage,
+    properties: {
+      name: hasStage
+    },
+    elementId: -152,
+    startNodeElementId: -144,
+    endNodeElementId: -148
+  }
+]"

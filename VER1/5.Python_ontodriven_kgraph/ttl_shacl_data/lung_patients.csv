@@ -1,0 +1,7 @@
+patient_id,age,sex,smoking_pack_years,stage,histology
+P001,67,M,45,IV,Adenocarcinoma
+P002,58,F,20,III,Squamous
+P003,72,M,60,IV,Adenocarcinoma
+P004,49,F,5,II,Adenocarcinoma
+P005,63,M,40,III,Squamous
+P006,55,F,10,I,Adenocarcinoma

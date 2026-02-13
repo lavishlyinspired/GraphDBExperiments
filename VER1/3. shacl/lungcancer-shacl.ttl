@@ -1,0 +1,80 @@
+@prefix lc: <http://example.org/lungCancer#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix neo4j: <neo4j://graph.schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#################################################
+# Patient
+#################################################
+
+lc:PatientShape a sh:NodeShape ;
+  sh:targetClass neo4j:Patient ;
+
+  sh:property [
+    sh:path neo4j:name ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+  ] ;
+
+  sh:property [
+    sh:path neo4j:age ;
+    sh:datatype xsd:integer ;
+    sh:minInclusive 0 ;
+    sh:maxInclusive 120 ;
+  ] ;
+
+  sh:property [
+    sh:path neo4j:hasDiagnosis ;
+    sh:minCount 1 ;
+  ] ;
+
+  sh:property [
+    sh:path neo4j:hasSymptom ;
+    sh:minCount 1 ;
+  ] .
+
+#################################################
+# LungCancer
+#################################################
+
+lc:LungCancerShape a sh:NodeShape ;
+  sh:targetClass neo4j:LungCancer ;
+
+  sh:property [
+    sh:path neo4j:hasStage ;
+    sh:minCount 1 ;
+  ] ;
+
+  sh:property [
+    sh:path neo4j:hasType ;
+    sh:minCount 1 ;
+  ] .
+
+#################################################
+# Treatment
+#################################################
+
+lc:TreatmentShape a sh:NodeShape ;
+  sh:targetClass neo4j:Treatment ;
+
+  sh:property [
+    sh:path neo4j:name ;
+    sh:minCount 1 ;
+  ] .
+
+#################################################
+# Article
+#################################################
+
+lc:ArticleShape a sh:NodeShape ;
+  sh:targetClass neo4j:Article ;
+
+  sh:property [
+    sh:path neo4j:title ;
+    sh:minCount 1 ;
+  ] ;
+
+  sh:property [
+    sh:path neo4j:uri ;
+    sh:minCount 1 ;
+  ] .

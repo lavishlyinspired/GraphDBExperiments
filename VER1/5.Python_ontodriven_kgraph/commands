@@ -1,0 +1,20 @@
+How to run
+pip install rdflib pandas
+
+
+pip install pyshacl
+
+
+
+python lung_cancer_kg_builder.py
+
+
+Output:
+
+lung_cancer_instances.ttl
+
+Optional: Load to Neo4j
+
+If using neosemantics:
+
+CALL n10s.rdf.import.fetch("file:///lung_cancer_instances.ttl","Turtle");

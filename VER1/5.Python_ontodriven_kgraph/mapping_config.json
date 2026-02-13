@@ -1,0 +1,36 @@
+{
+  "patients": {
+    "file": "ttl_shacl_data/lung_patients.csv",
+    "subject": "Patient_{patient_id}",
+    "type": "Patient",
+    "datatype_props": {
+      "patientId": "patient_id",
+      "age": "age",
+      "sex": "sex",
+      "smokingPackYears": "smoking_pack_years"
+    },
+    "object_links": {
+      "hasTumor": "Tumor_{patient_id}",
+      "hasStage": "Stage_{stage}",
+      "hasHistology": "Histology_{histology}"
+    }
+  },
+
+  "mutations": {
+    "file": "ttl_shacl_data/lung_mutations.csv",
+    "subject": "Patient_{patient_id}",
+    "object_links": {
+      "testedForBiomarker": "Biomarker_{gene}"
+    }
+  },
+
+  "treatments": {
+    "file": "ttl_shacl_data/lung_treatments.csv",
+    "subject": "Patient_{patient_id}",
+    "object_links": {
+      "receivedTherapy": "Therapy_{patient_id}_{drug}",
+      "usesDrug": "Drug_{drug}",
+      "hasOutcome": "Outcome_{patient_id}_{response}"
+    }
+  }
+}

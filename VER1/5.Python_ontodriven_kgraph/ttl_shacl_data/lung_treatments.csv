@@ -1,0 +1,7 @@
+patient_id,therapy_type,drug,response
+P001,Targeted,Osimertinib,Partial_Response
+P002,Chemo,Cisplatin,Stable
+P003,Targeted,Alectinib,Complete_Response
+P004,Targeted,Erlotinib,Partial_Response
+P005,Immunotherapy,Pembrolizumab,Partial_Response
+P006,Surgery,None,Disease_Free
