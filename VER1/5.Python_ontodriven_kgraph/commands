@@ -16,6 +16,8 @@ CALL n10s.graphconfig.init({
 
 
 call n10s.rdf.import.fetch("https://raw.githubusercontent.com/lavishlyinspired/GraphDBExperiments/refs/heads/main/VER1/5.Python_ontodriven_kgraph/ttl_shacl_data/lung_cancer_kg_schema.ttl","Turtle")
+
+
 pip install rdflib pandas
 
 

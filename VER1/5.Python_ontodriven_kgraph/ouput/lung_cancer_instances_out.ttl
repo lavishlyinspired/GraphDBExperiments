@@ -191,6 +191,7 @@ ont:usesDrug a owl:ObjectProperty ;
     rdfs:range ont:Drug .
 
 res:Patient_P001 a ont:Patient ;
+    rdfs:label "Patient P001" ;
     ont:age 67 ;
     ont:hasHistology res:Histology_Adenocarcinoma ;
     ont:hasOutcome res:Outcome_P001_Partial_Response ;
@@ -204,6 +205,7 @@ res:Patient_P001 a ont:Patient ;
     ont:usesDrug res:Drug_Osimertinib .
 
 res:Patient_P002 a ont:Patient ;
+    rdfs:label "Patient P002" ;
     ont:age 58 ;
     ont:hasHistology res:Histology_Squamous ;
     ont:hasOutcome res:Outcome_P002_Stable ;
@@ -217,6 +219,7 @@ res:Patient_P002 a ont:Patient ;
     ont:usesDrug res:Drug_Cisplatin .
 
 res:Patient_P003 a ont:Patient ;
+    rdfs:label "Patient P003" ;
     ont:age 72 ;
     ont:hasHistology res:Histology_Adenocarcinoma ;
     ont:hasOutcome res:Outcome_P003_Complete_Response ;
@@ -230,6 +233,7 @@ res:Patient_P003 a ont:Patient ;
     ont:usesDrug res:Drug_Alectinib .
 
 res:Patient_P004 a ont:Patient ;
+    rdfs:label "Patient P004" ;
     ont:age 49 ;
     ont:hasHistology res:Histology_Adenocarcinoma ;
     ont:hasOutcome res:Outcome_P004_Partial_Response ;
@@ -243,6 +247,7 @@ res:Patient_P004 a ont:Patient ;
     ont:usesDrug res:Drug_Erlotinib .
 
 res:Patient_P005 a ont:Patient ;
+    rdfs:label "Patient P005" ;
     ont:age 63 ;
     ont:hasHistology res:Histology_Squamous ;
     ont:hasOutcome res:Outcome_P005_Partial_Response ;
@@ -256,6 +261,7 @@ res:Patient_P005 a ont:Patient ;
     ont:usesDrug res:Drug_Pembrolizumab .
 
 res:Patient_P006 a ont:Patient ;
+    rdfs:label "Patient P006" ;
     ont:age 55 ;
     ont:hasHistology res:Histology_Adenocarcinoma ;
     ont:hasOutcome res:Outcome_P006_Disease_Free ;
@@ -297,6 +303,66 @@ ont:TargetedTherapy a owl:Class ;
     rdfs:comment "Targeted therapy treatment" ;
     rdfs:subClassOf ont:Therapy .
 
+res:Biomarker_ALK rdfs:label "Biomarker ALK" .
+
+res:Biomarker_BRAF rdfs:label "Biomarker BRAF" .
+
+res:Biomarker_KRAS rdfs:label "Biomarker KRAS" .
+
+res:Biomarker_PD-L1 rdfs:label "Biomarker PD-L1" .
+
+res:Drug_Alectinib rdfs:label "Drug Alectinib" .
+
+res:Drug_Cisplatin rdfs:label "Drug Cisplatin" .
+
+res:Drug_Erlotinib rdfs:label "Drug Erlotinib" .
+
+res:Drug_Osimertinib rdfs:label "Drug Osimertinib" .
+
+res:Drug_Pembrolizumab rdfs:label "Drug Pembrolizumab" .
+
+res:Drug_nan rdfs:label "Drug nan" .
+
+res:Outcome_P001_Partial_Response rdfs:label "Outcome P001 Partial Response" .
+
+res:Outcome_P002_Stable rdfs:label "Outcome P002 Stable" .
+
+res:Outcome_P003_Complete_Response rdfs:label "Outcome P003 Complete Response" .
+
+res:Outcome_P004_Partial_Response rdfs:label "Outcome P004 Partial Response" .
+
+res:Outcome_P005_Partial_Response rdfs:label "Outcome P005 Partial Response" .
+
+res:Outcome_P006_Disease_Free rdfs:label "Outcome P006 Disease Free" .
+
+res:Stage_I rdfs:label "Stage I" .
+
+res:Stage_II rdfs:label "Stage II" .
+
+res:Therapy_P001_Osimertinib rdfs:label "Therapy P001 Osimertinib" .
+
+res:Therapy_P002_Cisplatin rdfs:label "Therapy P002 Cisplatin" .
+
+res:Therapy_P003_Alectinib rdfs:label "Therapy P003 Alectinib" .
+
+res:Therapy_P004_Erlotinib rdfs:label "Therapy P004 Erlotinib" .
+
+res:Therapy_P005_Pembrolizumab rdfs:label "Therapy P005 Pembrolizumab" .
+
+res:Therapy_P006_nan rdfs:label "Therapy P006 nan" .
+
+res:Tumor_P001 rdfs:label "Tumor P001" .
+
+res:Tumor_P002 rdfs:label "Tumor P002" .
+
+res:Tumor_P003 rdfs:label "Tumor P003" .
+
+res:Tumor_P004 rdfs:label "Tumor P004" .
+
+res:Tumor_P005 rdfs:label "Tumor P005" .
+
+res:Tumor_P006 rdfs:label "Tumor P006" .
+
 ont:Disease a owl:Class ;
     rdfs:label "Disease" ;
     rdfs:comment "A disease or medical condition" .
@@ -308,6 +374,14 @@ ont:Drug a owl:Class ;
 ont:Guideline a owl:Class ;
     rdfs:label "Guideline" ;
     rdfs:comment "Clinical guideline" .
+
+res:Biomarker_EGFR rdfs:label "Biomarker EGFR" .
+
+res:Histology_Squamous rdfs:label "Histology Squamous" .
+
+res:Stage_III rdfs:label "Stage III" .
+
+res:Stage_IV rdfs:label "Stage IV" .
 
 ont:Biomarker a owl:Class ;
     rdfs:label "Biomarker" ;
@@ -324,6 +398,8 @@ ont:Tumor a owl:Class ;
 ont:Test a owl:Class ;
     rdfs:label "Test" ;
     rdfs:comment "A clinical or diagnostic test" .
+
+res:Histology_Adenocarcinoma rdfs:label "Histology Adenocarcinoma" .
 
 ont:Stage a owl:Class ;
     rdfs:label "Stage" ;
