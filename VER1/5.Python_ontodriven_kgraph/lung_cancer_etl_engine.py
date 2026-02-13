@@ -1,13 +1,17 @@
 import pandas as pd
 import json
+from pathlib import Path
 from rdflib import Graph, Namespace, URIRef, Literal
 from rdflib.namespace import RDF
 
 BASE = Namespace("http://lungkg.org/resource/")
 ONT  = Namespace("http://lungkg.org/ontology#")
 
-ONTOLOGY = "version26\\experiments\\GraphDBExperiments\\VER1\\5.Python_ontodriven_kgraph\\ttl_shacl_data\\lung_cancer_kg_schema.ttl"
-MAPPING  = "version26\\experiments\\GraphDBExperiments\\VER1\\5.Python_ontodriven_kgraph\\ttl_shacl_data\\mapping_config.json"
+# Get the directory where this script is located
+SCRIPT_DIR = Path(__file__).parent
+
+ONTOLOGY = SCRIPT_DIR / "ttl_shacl_data" / "lung_cancer_kg_schema.ttl"
+MAPPING  = SCRIPT_DIR / "ttl_shacl_data" / "mapping_config.json"
 
 g = Graph()
 g.parse(ONTOLOGY)
@@ -30,11 +34,13 @@ cypher_lines = []
 # Engine
 ########################################
 
-config = json.load(open(MAPPING))
+config = json.load(open(MAPPING, 'r'))
 
 for section in config.values():
 
-    df = pd.read_csv(section["file"])
+    # Resolve CSV file path relative to script directory
+    csv_path = SCRIPT_DIR / section["file"]
+    df = pd.read_csv(csv_path)
 
     for _, r in df.iterrows():
         row = r.to_dict()
@@ -73,9 +79,13 @@ for section in config.values():
 # Save outputs
 ########################################
 
-g.serialize("version26\\experiments\\GraphDBExperiments\\VER1\\5.Python_ontodriven_kgraph\\output\\lung_cancer_instances_out.ttl")
+# Create output directory if it doesn't exist
+OUTPUT_DIR = SCRIPT_DIR / "ouput"
+OUTPUT_DIR.mkdir(exist_ok=True)
 
-with open("version26\\experiments\\GraphDBExperiments\\VER1\\5.Python_ontodriven_kgraph\\output\\auto_generated.cypher","w") as f:
+g.serialize(OUTPUT_DIR / "lung_cancer_instances_out.ttl")
+
+with open(OUTPUT_DIR / "auto_generated.cypher", "w") as f:
     f.write("\n".join(cypher_lines))
 
 print("✓ RDF saved")

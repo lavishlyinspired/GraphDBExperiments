@@ -1,0 +1,254 @@
+@prefix ont: <http://lungkg.org/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix res: <http://lungkg.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ont:Chemotherapy a owl:Class ;
+    rdfs:subClassOf ont:Therapy .
+
+ont:EGFR_Guideline a ont:Guideline ;
+    rdfs:label "EGFR positive → Osimertinib" ;
+    ont:recommends ont:EGFR_Targeted_Therapy .
+
+ont:GenomicTest a owl:Class ;
+    rdfs:subClassOf ont:Test .
+
+ont:Imaging a owl:Class ;
+    rdfs:subClassOf ont:Test .
+
+ont:Immunotherapy a owl:Class ;
+    rdfs:subClassOf ont:Therapy .
+
+ont:LungCancer a owl:Class ;
+    rdfs:subClassOf ont:Disease .
+
+ont:Ontology a owl:Ontology ;
+    rdfs:label "Lung Cancer Decision Support Knowledge Graph Ontology" ;
+    rdfs:comment "Ontology for lung cancer diagnosis, genomics, treatment recommendation and outcomes reasoning" .
+
+ont:Pathology a owl:Class ;
+    rdfs:subClassOf ont:Test .
+
+ont:Stage_I a ont:Stage ;
+    ont:stageName "I" .
+
+ont:Stage_II a ont:Stage ;
+    ont:stageName "II" .
+
+ont:Stage_III a ont:Stage ;
+    ont:stageName "III" .
+
+ont:Stage_IV a ont:Stage ;
+    ont:stageName "IV" .
+
+ont:Surgery a owl:Class ;
+    rdfs:subClassOf ont:Therapy .
+
+ont:age a owl:DatatypeProperty ;
+    rdfs:domain ont:Patient ;
+    rdfs:range xsd:integer .
+
+ont:diagnosedWith a owl:ObjectProperty ;
+    rdfs:domain ont:Patient ;
+    rdfs:range ont:Disease .
+
+ont:drugName a owl:DatatypeProperty ;
+    rdfs:domain ont:Drug ;
+    rdfs:range xsd:string .
+
+ont:geneName a owl:DatatypeProperty ;
+    rdfs:domain ont:Gene ;
+    rdfs:range xsd:string .
+
+ont:hasGene a owl:ObjectProperty ;
+    rdfs:domain ont:Biomarker ;
+    rdfs:range ont:Gene .
+
+ont:hasHistology a owl:ObjectProperty ;
+    rdfs:domain ont:Tumor ;
+    rdfs:range ont:Histology .
+
+ont:hasMutation a owl:ObjectProperty ;
+    rdfs:domain ont:Biomarker ;
+    rdfs:range ont:Mutation .
+
+ont:hasOutcome a owl:ObjectProperty ;
+    rdfs:domain ont:Patient ;
+    rdfs:range ont:Outcome .
+
+ont:hasStage a owl:ObjectProperty ;
+    rdfs:domain ont:Tumor ;
+    rdfs:range ont:Stage .
+
+ont:hasTumor a owl:ObjectProperty ;
+    rdfs:domain ont:Patient ;
+    rdfs:range ont:Tumor .
+
+ont:histologyName a owl:DatatypeProperty ;
+    rdfs:domain ont:Histology ;
+    rdfs:range xsd:string .
+
+ont:patientId a owl:DatatypeProperty ;
+    rdfs:domain ont:Patient ;
+    rdfs:range xsd:string .
+
+ont:receivedTherapy a owl:ObjectProperty ;
+    rdfs:domain ont:Patient ;
+    rdfs:range ont:Therapy .
+
+ont:recommends a owl:ObjectProperty ;
+    rdfs:domain ont:Guideline ;
+    rdfs:range ont:Therapy .
+
+ont:responseType a owl:DatatypeProperty ;
+    rdfs:domain ont:Outcome ;
+    rdfs:range xsd:string .
+
+ont:sex a owl:DatatypeProperty ;
+    rdfs:domain ont:Patient ;
+    rdfs:range xsd:string .
+
+ont:smokingPackYears a owl:DatatypeProperty ;
+    rdfs:domain ont:Patient ;
+    rdfs:range xsd:float .
+
+ont:stageName a owl:DatatypeProperty ;
+    rdfs:domain ont:Stage ;
+    rdfs:range xsd:string .
+
+ont:survivalMonths a owl:DatatypeProperty ;
+    rdfs:domain ont:Outcome ;
+    rdfs:range xsd:float .
+
+ont:testedForBiomarker a owl:ObjectProperty ;
+    rdfs:domain ont:Patient ;
+    rdfs:range ont:Biomarker .
+
+ont:triggers a owl:ObjectProperty ;
+    rdfs:domain ont:ClinicalRule ;
+    rdfs:range ont:Therapy .
+
+ont:underwentTest a owl:ObjectProperty ;
+    rdfs:domain ont:Patient ;
+    rdfs:range ont:Test .
+
+ont:usesDrug a owl:ObjectProperty ;
+    rdfs:domain ont:Therapy ;
+    rdfs:range ont:Drug .
+
+res:Patient_P001 a ont:Patient ;
+    ont:age 67 ;
+    ont:hasHistology res:Histology_Adenocarcinoma ;
+    ont:hasOutcome res:Outcome_P001_Partial_Response ;
+    ont:hasStage res:Stage_IV ;
+    ont:hasTumor res:Tumor_P001 ;
+    ont:patientId "P001" ;
+    ont:receivedTherapy res:Therapy_P001_Osimertinib ;
+    ont:sex "M" ;
+    ont:smokingPackYears 45 ;
+    ont:testedForBiomarker res:Biomarker_EGFR ;
+    ont:usesDrug res:Drug_Osimertinib .
+
+res:Patient_P002 a ont:Patient ;
+    ont:age 58 ;
+    ont:hasHistology res:Histology_Squamous ;
+    ont:hasOutcome res:Outcome_P002_Stable ;
+    ont:hasStage res:Stage_III ;
+    ont:hasTumor res:Tumor_P002 ;
+    ont:patientId "P002" ;
+    ont:receivedTherapy res:Therapy_P002_Cisplatin ;
+    ont:sex "F" ;
+    ont:smokingPackYears 20 ;
+    ont:testedForBiomarker res:Biomarker_KRAS ;
+    ont:usesDrug res:Drug_Cisplatin .
+
+res:Patient_P003 a ont:Patient ;
+    ont:age 72 ;
+    ont:hasHistology res:Histology_Adenocarcinoma ;
+    ont:hasOutcome res:Outcome_P003_Complete_Response ;
+    ont:hasStage res:Stage_IV ;
+    ont:hasTumor res:Tumor_P003 ;
+    ont:patientId "P003" ;
+    ont:receivedTherapy res:Therapy_P003_Alectinib ;
+    ont:sex "M" ;
+    ont:smokingPackYears 60 ;
+    ont:testedForBiomarker res:Biomarker_ALK ;
+    ont:usesDrug res:Drug_Alectinib .
+
+res:Patient_P004 a ont:Patient ;
+    ont:age 49 ;
+    ont:hasHistology res:Histology_Adenocarcinoma ;
+    ont:hasOutcome res:Outcome_P004_Partial_Response ;
+    ont:hasStage res:Stage_II ;
+    ont:hasTumor res:Tumor_P004 ;
+    ont:patientId "P004" ;
+    ont:receivedTherapy res:Therapy_P004_Erlotinib ;
+    ont:sex "F" ;
+    ont:smokingPackYears 5 ;
+    ont:testedForBiomarker res:Biomarker_EGFR ;
+    ont:usesDrug res:Drug_Erlotinib .
+
+res:Patient_P005 a ont:Patient ;
+    ont:age 63 ;
+    ont:hasHistology res:Histology_Squamous ;
+    ont:hasOutcome res:Outcome_P005_Partial_Response ;
+    ont:hasStage res:Stage_III ;
+    ont:hasTumor res:Tumor_P005 ;
+    ont:patientId "P005" ;
+    ont:receivedTherapy res:Therapy_P005_Pembrolizumab ;
+    ont:sex "M" ;
+    ont:smokingPackYears 40 ;
+    ont:testedForBiomarker res:Biomarker_PD-L1 ;
+    ont:usesDrug res:Drug_Pembrolizumab .
+
+res:Patient_P006 a ont:Patient ;
+    ont:age 55 ;
+    ont:hasHistology res:Histology_Adenocarcinoma ;
+    ont:hasOutcome res:Outcome_P006_Disease_Free ;
+    ont:hasStage res:Stage_I ;
+    ont:hasTumor res:Tumor_P006 ;
+    ont:patientId "P006" ;
+    ont:receivedTherapy res:Therapy_P006_nan ;
+    ont:sex "F" ;
+    ont:smokingPackYears 10 ;
+    ont:testedForBiomarker res:Biomarker_BRAF ;
+    ont:usesDrug res:Drug_nan .
+
+ont:ClinicalRule a owl:Class .
+
+ont:EGFR_Targeted_Therapy a ont:TargetedTherapy ;
+    ont:usesDrug ont:Osimertinib .
+
+ont:Mutation a owl:Class .
+
+ont:Osimertinib a ont:Drug ;
+    ont:drugName "Osimertinib" .
+
+ont:TargetedTherapy a owl:Class ;
+    rdfs:subClassOf ont:Therapy .
+
+ont:Disease a owl:Class .
+
+ont:Gene a owl:Class .
+
+ont:Guideline a owl:Class .
+
+ont:Histology a owl:Class .
+
+ont:Biomarker a owl:Class .
+
+ont:Drug a owl:Class .
+
+ont:Outcome a owl:Class .
+
+ont:Tumor a owl:Class .
+
+ont:Test a owl:Class .
+
+ont:Stage a owl:Class .
+
+ont:Therapy a owl:Class .
+
+ont:Patient a owl:Class .
+
