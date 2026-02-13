@@ -1,5 +1,5 @@
 
-CALL apoc.periodic.truncate({ dropSchema: false });
+CALL apoc.periodic.truncate({ dropSchema: true });
 
 
 3. Connect to your database and either from the browser or the console and run the following:

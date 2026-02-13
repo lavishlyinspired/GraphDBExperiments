@@ -1,4 +1,21 @@
 How to run
+
+load to neo4j and to progtege
+
+CALL apoc.periodic.truncate({ dropSchema: true });
+
+  CREATE CONSTRAINT n10s_unique_uri FOR (r:Resource)
+        REQUIRE r.uri IS UNIQUE;
+
+
+CALL n10s.graphconfig.init({
+  handleVocabUris: "IGNORE",
+  handleRDFTypes: "LABELS",
+  applyNeo4jNaming: true
+});
+
+
+call n10s.rdf.import.fetch("https://raw.githubusercontent.com/lavishlyinspired/GraphDBExperiments/refs/heads/main/VER1/5.Python_ontodriven_kgraph/ttl_shacl_data/lung_cancer_kg_schema.ttl","Turtle")
 pip install rdflib pandas
 
 
@@ -6,15 +23,30 @@ pip install pyshacl
 
 
 
-python lung_cancer_kg_builder.py
+python lung_cancer_etl_engine.py
 
 
 Output:
 
 lung_cancer_instances.ttl
 
+
 Optional: Load to Neo4j
 
 If using neosemantics:
 
-CALL n10s.rdf.import.fetch("file:///lung_cancer_instances.ttl","Turtle");
+CALL n10s.rdf.import.fetch("https://raw.githubusercontent.com/lavishlyinspired/GraphDBExperiments/refs/heads/main/VER1/5.Python_ontodriven_kgraph/ouput/lung_cancer_instances_out.ttl","Turtle");
+
+CALL db.schema.visualization();
+
+
+MATCH (n:Resource)
+SET n.name = last(split(n.uri, '#'));
+
+
+
+
+MATCH (n:Resource)
+REMOVE n:Resource;
+
+

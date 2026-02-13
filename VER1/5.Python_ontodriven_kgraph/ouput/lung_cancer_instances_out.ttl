@@ -5,22 +5,33 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ont:Chemotherapy a owl:Class ;
+    rdfs:label "Chemotherapy" ;
+    rdfs:comment "Chemotherapy treatment" ;
     rdfs:subClassOf ont:Therapy .
 
 ont:EGFR_Guideline a ont:Guideline ;
-    rdfs:label "EGFR positive → Osimertinib" ;
-    ont:recommends ont:EGFR_Targeted_Therapy .
+    rdfs:label "EGFR positive to Osimertinib" ;
+    ont:recommends ont:EGFR_Targeted_Therapy ;
+    rdfs:comment "Guideline for EGFR positive patients" .
 
 ont:GenomicTest a owl:Class ;
+    rdfs:label "Genomic Test" ;
+    rdfs:comment "Genomic or molecular testing" ;
     rdfs:subClassOf ont:Test .
 
 ont:Imaging a owl:Class ;
+    rdfs:label "Imaging" ;
+    rdfs:comment "Imaging test" ;
     rdfs:subClassOf ont:Test .
 
 ont:Immunotherapy a owl:Class ;
+    rdfs:label "Immunotherapy" ;
+    rdfs:comment "Immunotherapy treatment" ;
     rdfs:subClassOf ont:Therapy .
 
 ont:LungCancer a owl:Class ;
+    rdfs:label "Lung Cancer" ;
+    rdfs:comment "Lung cancer disease" ;
     rdfs:subClassOf ont:Disease .
 
 ont:Ontology a owl:Ontology ;
@@ -28,112 +39,166 @@ ont:Ontology a owl:Ontology ;
     rdfs:comment "Ontology for lung cancer diagnosis, genomics, treatment recommendation and outcomes reasoning" .
 
 ont:Pathology a owl:Class ;
+    rdfs:label "Pathology" ;
+    rdfs:comment "Pathology test" ;
     rdfs:subClassOf ont:Test .
 
 ont:Stage_I a ont:Stage ;
+    rdfs:label "Stage I" ;
     ont:stageName "I" .
 
 ont:Stage_II a ont:Stage ;
+    rdfs:label "Stage II" ;
     ont:stageName "II" .
 
 ont:Stage_III a ont:Stage ;
+    rdfs:label "Stage III" ;
     ont:stageName "III" .
 
 ont:Stage_IV a ont:Stage ;
+    rdfs:label "Stage IV" ;
     ont:stageName "IV" .
 
 ont:Surgery a owl:Class ;
+    rdfs:label "Surgery" ;
+    rdfs:comment "Surgical treatment" ;
     rdfs:subClassOf ont:Therapy .
 
 ont:age a owl:DatatypeProperty ;
+    rdfs:label "age" ;
+    rdfs:comment "Patient age in years" ;
     rdfs:domain ont:Patient ;
     rdfs:range xsd:integer .
 
 ont:diagnosedWith a owl:ObjectProperty ;
+    rdfs:label "diagnosed with" ;
+    rdfs:comment "Patient diagnosed with a disease" ;
     rdfs:domain ont:Patient ;
     rdfs:range ont:Disease .
 
 ont:drugName a owl:DatatypeProperty ;
+    rdfs:label "drug name" ;
+    rdfs:comment "Pharmaceutical drug name" ;
     rdfs:domain ont:Drug ;
     rdfs:range xsd:string .
 
 ont:geneName a owl:DatatypeProperty ;
+    rdfs:label "gene name" ;
+    rdfs:comment "Gene symbol or name" ;
     rdfs:domain ont:Gene ;
     rdfs:range xsd:string .
 
 ont:hasGene a owl:ObjectProperty ;
+    rdfs:label "has gene" ;
+    rdfs:comment "Biomarker associated with a gene" ;
     rdfs:domain ont:Biomarker ;
     rdfs:range ont:Gene .
 
 ont:hasHistology a owl:ObjectProperty ;
+    rdfs:label "has histology" ;
+    rdfs:comment "Tumor has a histological type" ;
     rdfs:domain ont:Tumor ;
     rdfs:range ont:Histology .
 
 ont:hasMutation a owl:ObjectProperty ;
+    rdfs:label "has mutation" ;
+    rdfs:comment "Biomarker has a mutation" ;
     rdfs:domain ont:Biomarker ;
     rdfs:range ont:Mutation .
 
 ont:hasOutcome a owl:ObjectProperty ;
+    rdfs:label "has outcome" ;
+    rdfs:comment "Patient has a treatment outcome" ;
     rdfs:domain ont:Patient ;
     rdfs:range ont:Outcome .
 
 ont:hasStage a owl:ObjectProperty ;
+    rdfs:label "has stage" ;
+    rdfs:comment "Tumor has a cancer stage" ;
     rdfs:domain ont:Tumor ;
     rdfs:range ont:Stage .
 
 ont:hasTumor a owl:ObjectProperty ;
+    rdfs:label "has tumor" ;
+    rdfs:comment "Patient has a tumor" ;
     rdfs:domain ont:Patient ;
     rdfs:range ont:Tumor .
 
 ont:histologyName a owl:DatatypeProperty ;
+    rdfs:label "histology name" ;
+    rdfs:comment "Histological classification name" ;
     rdfs:domain ont:Histology ;
     rdfs:range xsd:string .
 
 ont:patientId a owl:DatatypeProperty ;
+    rdfs:label "patient ID" ;
+    rdfs:comment "Unique patient identifier" ;
     rdfs:domain ont:Patient ;
     rdfs:range xsd:string .
 
 ont:receivedTherapy a owl:ObjectProperty ;
+    rdfs:label "received therapy" ;
+    rdfs:comment "Patient received a therapy" ;
     rdfs:domain ont:Patient ;
     rdfs:range ont:Therapy .
 
 ont:recommends a owl:ObjectProperty ;
+    rdfs:label "recommends" ;
+    rdfs:comment "Guideline recommends a therapy" ;
     rdfs:domain ont:Guideline ;
     rdfs:range ont:Therapy .
 
 ont:responseType a owl:DatatypeProperty ;
+    rdfs:label "response type" ;
+    rdfs:comment "Treatment response classification" ;
     rdfs:domain ont:Outcome ;
     rdfs:range xsd:string .
 
 ont:sex a owl:DatatypeProperty ;
+    rdfs:label "sex" ;
+    rdfs:comment "Patient biological sex" ;
     rdfs:domain ont:Patient ;
     rdfs:range xsd:string .
 
 ont:smokingPackYears a owl:DatatypeProperty ;
+    rdfs:label "smoking pack years" ;
+    rdfs:comment "Cumulative smoking exposure in pack-years" ;
     rdfs:domain ont:Patient ;
     rdfs:range xsd:float .
 
 ont:stageName a owl:DatatypeProperty ;
+    rdfs:label "stage name" ;
+    rdfs:comment "Cancer stage designation" ;
     rdfs:domain ont:Stage ;
     rdfs:range xsd:string .
 
 ont:survivalMonths a owl:DatatypeProperty ;
+    rdfs:label "survival months" ;
+    rdfs:comment "Patient survival duration in months" ;
     rdfs:domain ont:Outcome ;
     rdfs:range xsd:float .
 
 ont:testedForBiomarker a owl:ObjectProperty ;
+    rdfs:label "tested for biomarker" ;
+    rdfs:comment "Patient tested for a biomarker" ;
     rdfs:domain ont:Patient ;
     rdfs:range ont:Biomarker .
 
 ont:triggers a owl:ObjectProperty ;
+    rdfs:label "triggers" ;
+    rdfs:comment "Clinical rule triggers a therapy recommendation" ;
     rdfs:domain ont:ClinicalRule ;
     rdfs:range ont:Therapy .
 
 ont:underwentTest a owl:ObjectProperty ;
+    rdfs:label "underwent test" ;
+    rdfs:comment "Patient underwent a diagnostic test" ;
     rdfs:domain ont:Patient ;
     rdfs:range ont:Test .
 
 ont:usesDrug a owl:ObjectProperty ;
+    rdfs:label "uses drug" ;
+    rdfs:comment "Therapy uses a drug" ;
     rdfs:domain ont:Therapy ;
     rdfs:range ont:Drug .
 
@@ -215,40 +280,72 @@ res:Patient_P006 a ont:Patient ;
     ont:testedForBiomarker res:Biomarker_BRAF ;
     ont:usesDrug res:Drug_nan .
 
-ont:ClinicalRule a owl:Class .
+ont:ClinicalRule a owl:Class ;
+    rdfs:label "Clinical Rule" ;
+    rdfs:comment "Clinical decision rule" .
 
 ont:EGFR_Targeted_Therapy a ont:TargetedTherapy ;
+    rdfs:label "EGFR Targeted Therapy" ;
     ont:usesDrug ont:Osimertinib .
 
-ont:Mutation a owl:Class .
+ont:Mutation a owl:Class ;
+    rdfs:label "Mutation" ;
+    rdfs:comment "Genetic mutation" .
 
 ont:Osimertinib a ont:Drug ;
+    rdfs:label "Osimertinib" ;
     ont:drugName "Osimertinib" .
 
 ont:TargetedTherapy a owl:Class ;
+    rdfs:label "Targeted Therapy" ;
+    rdfs:comment "Targeted therapy treatment" ;
     rdfs:subClassOf ont:Therapy .
 
-ont:Disease a owl:Class .
+ont:Disease a owl:Class ;
+    rdfs:label "Disease" ;
+    rdfs:comment "A disease or medical condition" .
 
-ont:Gene a owl:Class .
+ont:Gene a owl:Class ;
+    rdfs:label "Gene" ;
+    rdfs:comment "A gene" .
 
-ont:Guideline a owl:Class .
+ont:Guideline a owl:Class ;
+    rdfs:label "Guideline" ;
+    rdfs:comment "Clinical guideline" .
 
-ont:Histology a owl:Class .
+ont:Histology a owl:Class ;
+    rdfs:label "Histology" ;
+    rdfs:comment "Histological type of cancer" .
 
-ont:Biomarker a owl:Class .
+ont:Biomarker a owl:Class ;
+    rdfs:label "Biomarker" ;
+    rdfs:comment "Biological marker for genomic analysis" .
 
-ont:Drug a owl:Class .
+ont:Drug a owl:Class ;
+    rdfs:label "Drug" ;
+    rdfs:comment "A pharmaceutical drug" .
 
-ont:Outcome a owl:Class .
+ont:Outcome a owl:Class ;
+    rdfs:label "Outcome" ;
+    rdfs:comment "Treatment outcome" .
 
-ont:Tumor a owl:Class .
+ont:Tumor a owl:Class ;
+    rdfs:label "Tumor" ;
+    rdfs:comment "A tumor or malignant growth" .
 
-ont:Test a owl:Class .
+ont:Test a owl:Class ;
+    rdfs:label "Test" ;
+    rdfs:comment "A clinical or diagnostic test" .
 
-ont:Stage a owl:Class .
+ont:Stage a owl:Class ;
+    rdfs:label "Stage" ;
+    rdfs:comment "Cancer staging classification" .
 
-ont:Therapy a owl:Class .
+ont:Therapy a owl:Class ;
+    rdfs:label "Therapy" ;
+    rdfs:comment "A medical therapy or treatment" .
 
-ont:Patient a owl:Class .
+ont:Patient a owl:Class ;
+    rdfs:label "Patient" ;
+    rdfs:comment "A patient in the lung cancer knowledge graph" .
 

@@ -16,34 +16,101 @@
 # Core Classes
 #################################################
 
-:Patient rdf:type owl:Class .
-:Disease rdf:type owl:Class .
+:Patient rdf:type owl:Class ;
+    rdfs:label "Patient" ;
+    rdfs:comment "A patient in the lung cancer knowledge graph" .
+
+:Disease rdf:type owl:Class ;
+    rdfs:label "Disease" ;
+    rdfs:comment "A disease or medical condition" .
+
 :LungCancer rdf:type owl:Class ;
-    rdfs:subClassOf :Disease .
+    rdfs:subClassOf :Disease ;
+    rdfs:label "Lung Cancer" ;
+    rdfs:comment "Lung cancer disease" .
 
-:Tumor rdf:type owl:Class .
-:Stage rdf:type owl:Class .
-:Histology rdf:type owl:Class .
+:Tumor rdf:type owl:Class ;
+    rdfs:label "Tumor" ;
+    rdfs:comment "A tumor or malignant growth" .
 
-:Biomarker rdf:type owl:Class .
-:Mutation rdf:type owl:Class .
-:Gene rdf:type owl:Class .
+:Stage rdf:type owl:Class ;
+    rdfs:label "Stage" ;
+    rdfs:comment "Cancer staging classification" .
 
-:Test rdf:type owl:Class .
-:Imaging rdf:type owl:Class ; rdfs:subClassOf :Test .
-:Pathology rdf:type owl:Class ; rdfs:subClassOf :Test .
-:GenomicTest rdf:type owl:Class ; rdfs:subClassOf :Test .
+:Histology rdf:type owl:Class ;
+    rdfs:label "Histology" ;
+    rdfs:comment "Histological type of cancer" .
 
-:Therapy rdf:type owl:Class .
-:Drug rdf:type owl:Class .
-:Chemotherapy rdf:type owl:Class ; rdfs:subClassOf :Therapy .
-:TargetedTherapy rdf:type owl:Class ; rdfs:subClassOf :Therapy .
-:Immunotherapy rdf:type owl:Class ; rdfs:subClassOf :Therapy .
-:Surgery rdf:type owl:Class ; rdfs:subClassOf :Therapy .
+:Biomarker rdf:type owl:Class ;
+    rdfs:label "Biomarker" ;
+    rdfs:comment "Biological marker for genomic analysis" .
 
-:Outcome rdf:type owl:Class .
-:Guideline rdf:type owl:Class .
-:ClinicalRule rdf:type owl:Class .
+:Mutation rdf:type owl:Class ;
+    rdfs:label "Mutation" ;
+    rdfs:comment "Genetic mutation" .
+
+:Gene rdf:type owl:Class ;
+    rdfs:label "Gene" ;
+    rdfs:comment "A gene" .
+
+:Test rdf:type owl:Class ;
+    rdfs:label "Test" ;
+    rdfs:comment "A clinical or diagnostic test" .
+
+:Imaging rdf:type owl:Class ;
+    rdfs:subClassOf :Test ;
+    rdfs:label "Imaging" ;
+    rdfs:comment "Imaging test" .
+
+:Pathology rdf:type owl:Class ;
+    rdfs:subClassOf :Test ;
+    rdfs:label "Pathology" ;
+    rdfs:comment "Pathology test" .
+
+:GenomicTest rdf:type owl:Class ;
+    rdfs:subClassOf :Test ;
+    rdfs:label "Genomic Test" ;
+    rdfs:comment "Genomic or molecular testing" .
+
+:Therapy rdf:type owl:Class ;
+    rdfs:label "Therapy" ;
+    rdfs:comment "A medical therapy or treatment" .
+
+:Drug rdf:type owl:Class ;
+    rdfs:label "Drug" ;
+    rdfs:comment "A pharmaceutical drug" .
+
+:Chemotherapy rdf:type owl:Class ;
+    rdfs:subClassOf :Therapy ;
+    rdfs:label "Chemotherapy" ;
+    rdfs:comment "Chemotherapy treatment" .
+
+:TargetedTherapy rdf:type owl:Class ;
+    rdfs:subClassOf :Therapy ;
+    rdfs:label "Targeted Therapy" ;
+    rdfs:comment "Targeted therapy treatment" .
+
+:Immunotherapy rdf:type owl:Class ;
+    rdfs:subClassOf :Therapy ;
+    rdfs:label "Immunotherapy" ;
+    rdfs:comment "Immunotherapy treatment" .
+
+:Surgery rdf:type owl:Class ;
+    rdfs:subClassOf :Therapy ;
+    rdfs:label "Surgery" ;
+    rdfs:comment "Surgical treatment" .
+
+:Outcome rdf:type owl:Class ;
+    rdfs:label "Outcome" ;
+    rdfs:comment "Treatment outcome" .
+
+:Guideline rdf:type owl:Class ;
+    rdfs:label "Guideline" ;
+    rdfs:comment "Clinical guideline" .
+
+:ClinicalRule rdf:type owl:Class ;
+    rdfs:label "Clinical Rule" ;
+    rdfs:comment "Clinical decision rule" .
 
 #################################################
 # Datatype Properties
@@ -51,43 +118,51 @@
 
 :patientId rdf:type owl:DatatypeProperty ;
     rdfs:domain :Patient ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:string ;
+    rdfs:label "patient ID" ;
+    rdfs:comment "Unique patient identifier" .
 
 :age rdf:type owl:DatatypeProperty ;
     rdfs:domain :Patient ;
-    rdfs:range xsd:integer .
+    rdfs:range xsd:integer ;
+    rdfs:label "age" ;
+    rdfs:comment "Patient age in years" .
 
 :sex rdf:type owl:DatatypeProperty ;
     rdfs:domain :Patient ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:string ;
+    rdfs:label "sex" ;
+    rdfs:comment "Patient biological sex" .
 
 :smokingPackYears rdf:type owl:DatatypeProperty ;
     rdfs:domain :Patient ;
-    rdfs:range xsd:float .
+    rdfs:range xsd:float ;
+    rdfs:label "smoking pack years" ;
+    rdfs:comment "Cumulative smoking exposure in pack-years" .
 
-:stageName rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Stage ;
-    rdfs:range xsd:string .
+:name rdf:type owl:DatatypeProperty ;
+    rdfs:domain owl:Thing ;
+    rdfs:range xsd:string ;
+    rdfs:label "name" ;
+    rdfs:comment "Common name property for entities" .
 
-:histologyName rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Histology ;
-    rdfs:range xsd:string .
-
-:geneName rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Gene ;
-    rdfs:range xsd:string .
-
-:drugName rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Drug ;
-    rdfs:range xsd:string .
+:description rdf:type owl:DatatypeProperty ;
+    rdfs:domain owl:Thing ;
+    rdfs:range xsd:string ;
+    rdfs:label "description" ;
+    rdfs:comment "Description of an entity" .
 
 :responseType rdf:type owl:DatatypeProperty ;
     rdfs:domain :Outcome ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:string ;
+    rdfs:label "response type" ;
+    rdfs:comment "Treatment response classification" .
 
 :survivalMonths rdf:type owl:DatatypeProperty ;
     rdfs:domain :Outcome ;
-    rdfs:range xsd:float .
+    rdfs:range xsd:float ;
+    rdfs:label "survival months" ;
+    rdfs:comment "Patient survival duration in months" .
 
 #################################################
 # Object Properties
@@ -95,68 +170,97 @@
 
 :diagnosedWith rdf:type owl:ObjectProperty ;
     rdfs:domain :Patient ;
-    rdfs:range :Disease .
+    rdfs:range :Disease ;
+    rdfs:label "diagnosed with" ;
+    rdfs:comment "Patient diagnosed with a disease" .
 
 :hasTumor rdf:type owl:ObjectProperty ;
     rdfs:domain :Patient ;
-    rdfs:range :Tumor .
+    rdfs:range :Tumor ;
+    rdfs:label "has tumor" ;
+    rdfs:comment "Patient has a tumor" .
 
 :hasStage rdf:type owl:ObjectProperty ;
     rdfs:domain :Tumor ;
-    rdfs:range :Stage .
+    rdfs:range :Stage ;
+    rdfs:label "has stage" ;
+    rdfs:comment "Tumor has a cancer stage" .
 
 :hasHistology rdf:type owl:ObjectProperty ;
     rdfs:domain :Tumor ;
-    rdfs:range :Histology .
+    rdfs:range :Histology ;
+    rdfs:label "has histology" ;
+    rdfs:comment "Tumor has a histological type" .
 
 :underwentTest rdf:type owl:ObjectProperty ;
     rdfs:domain :Patient ;
-    rdfs:range :Test .
+    rdfs:range :Test ;
+    rdfs:label "underwent test" ;
+    rdfs:comment "Patient underwent a diagnostic test" .
 
 :testedForBiomarker rdf:type owl:ObjectProperty ;
     rdfs:domain :Patient ;
-    rdfs:range :Biomarker .
+    rdfs:range :Biomarker ;
+    rdfs:label "tested for biomarker" ;
+    rdfs:comment "Patient tested for a biomarker" .
 
 :hasGene rdf:type owl:ObjectProperty ;
     rdfs:domain :Biomarker ;
-    rdfs:range :Gene .
+    rdfs:range :Gene ;
+    rdfs:label "has gene" ;
+    rdfs:comment "Biomarker associated with a gene" .
 
 :hasMutation rdf:type owl:ObjectProperty ;
     rdfs:domain :Biomarker ;
-    rdfs:range :Mutation .
+    rdfs:range :Mutation ;
+    rdfs:label "has mutation" ;
+    rdfs:comment "Biomarker has a mutation" .
 
 :receivedTherapy rdf:type owl:ObjectProperty ;
     rdfs:domain :Patient ;
-    rdfs:range :Therapy .
+    rdfs:range :Therapy ;
+    rdfs:label "received therapy" ;
+    rdfs:comment "Patient received a therapy" .
 
 :usesDrug rdf:type owl:ObjectProperty ;
     rdfs:domain :Therapy ;
-    rdfs:range :Drug .
+    rdfs:range :Drug ;
+    rdfs:label "uses drug" ;
+    rdfs:comment "Therapy uses a drug" .
 
 :hasOutcome rdf:type owl:ObjectProperty ;
     rdfs:domain :Patient ;
-    rdfs:range :Outcome .
+    rdfs:range :Outcome ;
+    rdfs:label "has outcome" ;
+    rdfs:comment "Patient has a treatment outcome" .
 
 :recommends rdf:type owl:ObjectProperty ;
     rdfs:domain :Guideline ;
-    rdfs:range :Therapy .
+    rdfs:range :Therapy ;
+    rdfs:label "recommends" ;
+    rdfs:comment "Guideline recommends a therapy" .
 
 :triggers rdf:type owl:ObjectProperty ;
     rdfs:domain :ClinicalRule ;
-    rdfs:range :Therapy .
+    rdfs:range :Therapy ;
+    rdfs:label "triggers" ;
+    rdfs:comment "Clinical rule triggers a therapy recommendation" .
 
 #################################################
 # DSS Rule Examples (optional individuals)
 #################################################
 
 :EGFR_Guideline rdf:type :Guideline ;
-    rdfs:label "EGFR positive → Osimertinib" .
+    rdfs:label "EGFR positive to Osimertinib" ;
+    rdfs:comment "Guideline for EGFR positive patients" .
 
 :Osimertinib rdf:type :Drug ;
-    :drugName "Osimertinib" .
+    :name "Osimertinib" ;
+    rdfs:label "Osimertinib" .
 
 :EGFR_Targeted_Therapy rdf:type :TargetedTherapy ;
-    :usesDrug :Osimertinib .
+    :usesDrug :Osimertinib ;
+    rdfs:label "EGFR Targeted Therapy" .
 
 :EGFR_Guideline :recommends :EGFR_Targeted_Therapy .
 
@@ -164,7 +268,18 @@
 # Stage Instances (optional controlled vocabulary)
 #################################################
 
-:Stage_I rdf:type :Stage ; :stageName "I" .
-:Stage_II rdf:type :Stage ; :stageName "II" .
-:Stage_III rdf:type :Stage ; :stageName "III" .
-:Stage_IV rdf:type :Stage ; :stageName "IV" .
+:Stage_I rdf:type :Stage ;
+    :name "I" ;
+    rdfs:label "Stage I" .
+
+:Stage_II rdf:type :Stage ;
+    :name "II" ;
+    rdfs:label "Stage II" .
+
+:Stage_III rdf:type :Stage ;
+    :name "III" ;
+    rdfs:label "Stage III" .
+
+:Stage_IV rdf:type :Stage ;
+    :name "IV" ;
+    rdfs:label "Stage IV" .
