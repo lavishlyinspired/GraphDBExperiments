@@ -1,0 +1,312 @@
+[
+  {
+    "nodes": [
+      {
+        "identity": -107,
+        "labels": [
+          "ObjectProperty"
+        ],
+        "properties": {
+          "indexes": [
+
+          ],
+          "name": "ObjectProperty",
+          "constraints": [
+
+          ]
+        },
+        "elementId": "-107"
+      },
+      {
+        "identity": -110,
+        "labels": [
+          "CancerType"
+        ],
+        "properties": {
+          "indexes": [
+
+          ],
+          "name": "CancerType",
+          "constraints": [
+
+          ]
+        },
+        "elementId": "-110"
+      },
+      {
+        "identity": -101,
+        "labels": [
+          "Article"
+        ],
+        "properties": {
+          "indexes": [
+
+          ],
+          "name": "Article",
+          "constraints": [
+
+          ]
+        },
+        "elementId": "-101"
+      },
+      {
+        "identity": -102,
+        "labels": [
+          "Resource"
+        ],
+        "properties": {
+          "indexes": [
+
+          ],
+          "name": "Resource",
+          "constraints": [
+            "Constraint( id=15, name='n10s_unique_uri', type='NODE PROPERTY UNIQUENESS', schema=(:Resource {uri}), ownedIndex=13 )"
+          ]
+        },
+        "elementId": "-102"
+      },
+      {
+        "identity": -103,
+        "labels": [
+          "Patient"
+        ],
+        "properties": {
+          "indexes": [
+
+          ],
+          "name": "Patient",
+          "constraints": [
+
+          ]
+        },
+        "elementId": "-103"
+      },
+      {
+        "identity": -111,
+        "labels": [
+          "Treatment"
+        ],
+        "properties": {
+          "indexes": [
+
+          ],
+          "name": "Treatment",
+          "constraints": [
+
+          ]
+        },
+        "elementId": "-111"
+      },
+      {
+        "identity": -104,
+        "labels": [
+          "LungCancer"
+        ],
+        "properties": {
+          "indexes": [
+
+          ],
+          "name": "LungCancer",
+          "constraints": [
+
+          ]
+        },
+        "elementId": "-104"
+      },
+      {
+        "identity": -108,
+        "labels": [
+          "Stage"
+        ],
+        "properties": {
+          "indexes": [
+
+          ],
+          "name": "Stage",
+          "constraints": [
+
+          ]
+        },
+        "elementId": "-108"
+      },
+      {
+        "identity": -105,
+        "labels": [
+          "Class"
+        ],
+        "properties": {
+          "indexes": [
+
+          ],
+          "name": "Class",
+          "constraints": [
+
+          ]
+        },
+        "elementId": "-105"
+      },
+      {
+        "identity": -112,
+        "labels": [
+          "Hospital"
+        ],
+        "properties": {
+          "indexes": [
+
+          ],
+          "name": "Hospital",
+          "constraints": [
+
+          ]
+        },
+        "elementId": "-112"
+      },
+      {
+        "identity": -100,
+        "labels": [
+          "_GraphConfig"
+        ],
+        "properties": {
+          "indexes": [
+
+          ],
+          "name": "_GraphConfig",
+          "constraints": [
+
+          ]
+        },
+        "elementId": "-100"
+      },
+      {
+        "identity": -109,
+        "labels": [
+          "Symptom"
+        ],
+        "properties": {
+          "indexes": [
+
+          ],
+          "name": "Symptom",
+          "constraints": [
+
+          ]
+        },
+        "elementId": "-109"
+      },
+      {
+        "identity": -106,
+        "labels": [
+          "DatatypeProperty"
+        ],
+        "properties": {
+          "indexes": [
+
+          ],
+          "name": "DatatypeProperty",
+          "constraints": [
+
+          ]
+        },
+        "elementId": "-106"
+      }
+    ],
+    "relationships": [
+      {
+        "identity": -103,
+        "start": -103,
+        "end": -109,
+        "type": "hasSymptom",
+        "properties": {
+          "name": "hasSymptom"
+        },
+        "elementId": "-103",
+        "startNodeElementId": "-103",
+        "endNodeElementId": "-109"
+      },
+      {
+        "identity": -101,
+        "start": -107,
+        "end": -105,
+        "type": "domain",
+        "properties": {
+          "name": "domain"
+        },
+        "elementId": "-101",
+        "startNodeElementId": "-107",
+        "endNodeElementId": "-105"
+      },
+      {
+        "identity": -107,
+        "start": -103,
+        "end": -111,
+        "type": "receivesTreatment",
+        "properties": {
+          "name": "receivesTreatment"
+        },
+        "elementId": "-107",
+        "startNodeElementId": "-103",
+        "endNodeElementId": "-111"
+      },
+      {
+        "identity": -100,
+        "start": -107,
+        "end": -105,
+        "type": "range",
+        "properties": {
+          "name": "range"
+        },
+        "elementId": "-100",
+        "startNodeElementId": "-107",
+        "endNodeElementId": "-105"
+      },
+      {
+        "identity": -105,
+        "start": -103,
+        "end": -112,
+        "type": "treatedAt",
+        "properties": {
+          "name": "treatedAt"
+        },
+        "elementId": "-105",
+        "startNodeElementId": "-103",
+        "endNodeElementId": "-112"
+      },
+      {
+        "identity": -102,
+        "start": -103,
+        "end": -104,
+        "type": "hasDiagnosis",
+        "properties": {
+          "name": "hasDiagnosis"
+        },
+        "elementId": "-102",
+        "startNodeElementId": "-103",
+        "endNodeElementId": "-104"
+      },
+      {
+        "identity": -104,
+        "start": -104,
+        "end": -110,
+        "type": "hasType",
+        "properties": {
+          "name": "hasType"
+        },
+        "elementId": "-104",
+        "startNodeElementId": "-104",
+        "endNodeElementId": "-110"
+      },
+      {
+        "identity": -106,
+        "start": -104,
+        "end": -108,
+        "type": "hasStage",
+        "properties": {
+          "name": "hasStage"
+        },
+        "elementId": "-106",
+        "startNodeElementId": "-104",
+        "endNodeElementId": "-108"
+      }
+    ]
+  }
+]
