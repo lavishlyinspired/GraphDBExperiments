@@ -109,54 +109,66 @@ MERGE (n)-[:TESTEDFORBIOMARKER]->(o)
 MERGE (o:Therapy {id:'Therapy_P001_Osimertinib'})
 SET o.label='Therapy P001 Osimertinib'
 MERGE (n)-[:RECEIVEDTHERAPY]->(o)
-MERGE (o:Drug {id:'Drug_Osimertinib'})
-SET o.label='Drug Osimertinib'
-MERGE (n)-[:USESDRUG]->(o)
 MERGE (o:Outcome {id:'Outcome_P001_Partial_Response'})
 SET o.label='Outcome P001 Partial Response'
 MERGE (n)-[:HASOUTCOME]->(o)
 MERGE (o:Therapy {id:'Therapy_P002_Cisplatin'})
 SET o.label='Therapy P002 Cisplatin'
 MERGE (n)-[:RECEIVEDTHERAPY]->(o)
-MERGE (o:Drug {id:'Drug_Cisplatin'})
-SET o.label='Drug Cisplatin'
-MERGE (n)-[:USESDRUG]->(o)
 MERGE (o:Outcome {id:'Outcome_P002_Stable'})
 SET o.label='Outcome P002 Stable'
 MERGE (n)-[:HASOUTCOME]->(o)
 MERGE (o:Therapy {id:'Therapy_P003_Alectinib'})
 SET o.label='Therapy P003 Alectinib'
 MERGE (n)-[:RECEIVEDTHERAPY]->(o)
-MERGE (o:Drug {id:'Drug_Alectinib'})
-SET o.label='Drug Alectinib'
-MERGE (n)-[:USESDRUG]->(o)
 MERGE (o:Outcome {id:'Outcome_P003_Complete_Response'})
 SET o.label='Outcome P003 Complete Response'
 MERGE (n)-[:HASOUTCOME]->(o)
 MERGE (o:Therapy {id:'Therapy_P004_Erlotinib'})
 SET o.label='Therapy P004 Erlotinib'
 MERGE (n)-[:RECEIVEDTHERAPY]->(o)
-MERGE (o:Drug {id:'Drug_Erlotinib'})
-SET o.label='Drug Erlotinib'
-MERGE (n)-[:USESDRUG]->(o)
 MERGE (o:Outcome {id:'Outcome_P004_Partial_Response'})
 SET o.label='Outcome P004 Partial Response'
 MERGE (n)-[:HASOUTCOME]->(o)
 MERGE (o:Therapy {id:'Therapy_P005_Pembrolizumab'})
 SET o.label='Therapy P005 Pembrolizumab'
 MERGE (n)-[:RECEIVEDTHERAPY]->(o)
-MERGE (o:Drug {id:'Drug_Pembrolizumab'})
-SET o.label='Drug Pembrolizumab'
-MERGE (n)-[:USESDRUG]->(o)
 MERGE (o:Outcome {id:'Outcome_P005_Partial_Response'})
 SET o.label='Outcome P005 Partial Response'
 MERGE (n)-[:HASOUTCOME]->(o)
 MERGE (o:Therapy {id:'Therapy_P006_nan'})
 SET o.label='Therapy P006 nan'
 MERGE (n)-[:RECEIVEDTHERAPY]->(o)
-MERGE (o:Drug {id:'Drug_nan'})
-SET o.label='Drug nan'
-MERGE (n)-[:USESDRUG]->(o)
 MERGE (o:Outcome {id:'Outcome_P006_Disease_Free'})
 SET o.label='Outcome P006 Disease Free'
 MERGE (n)-[:HASOUTCOME]->(o)
+MERGE (n:Therapy {id:'Therapy_P001_Osimertinib'})
+SET n.label='Therapy P001 Osimertinib'
+MERGE (o:Drug {id:'Drug_Osimertinib'})
+SET o.label='Drug Osimertinib'
+MERGE (n)-[:USESDRUG]->(o)
+MERGE (n:Therapy {id:'Therapy_P002_Cisplatin'})
+SET n.label='Therapy P002 Cisplatin'
+MERGE (o:Drug {id:'Drug_Cisplatin'})
+SET o.label='Drug Cisplatin'
+MERGE (n)-[:USESDRUG]->(o)
+MERGE (n:Therapy {id:'Therapy_P003_Alectinib'})
+SET n.label='Therapy P003 Alectinib'
+MERGE (o:Drug {id:'Drug_Alectinib'})
+SET o.label='Drug Alectinib'
+MERGE (n)-[:USESDRUG]->(o)
+MERGE (n:Therapy {id:'Therapy_P004_Erlotinib'})
+SET n.label='Therapy P004 Erlotinib'
+MERGE (o:Drug {id:'Drug_Erlotinib'})
+SET o.label='Drug Erlotinib'
+MERGE (n)-[:USESDRUG]->(o)
+MERGE (n:Therapy {id:'Therapy_P005_Pembrolizumab'})
+SET n.label='Therapy P005 Pembrolizumab'
+MERGE (o:Drug {id:'Drug_Pembrolizumab'})
+SET o.label='Drug Pembrolizumab'
+MERGE (n)-[:USESDRUG]->(o)
+MERGE (n:Therapy {id:'Therapy_P006_nan'})
+SET n.label='Therapy P006 nan'
+MERGE (o:Drug {id:'Drug_nan'})
+SET o.label='Drug nan'
+MERGE (n)-[:USESDRUG]->(o)

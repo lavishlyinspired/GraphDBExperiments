@@ -201,8 +201,7 @@ res:Patient_P001 a ont:Patient ;
     ont:receivedTherapy res:Therapy_P001_Osimertinib ;
     ont:sex "M" ;
     ont:smokingPackYears 45 ;
-    ont:testedForBiomarker res:Biomarker_EGFR ;
-    ont:usesDrug res:Drug_Osimertinib .
+    ont:testedForBiomarker res:Biomarker_EGFR .
 
 res:Patient_P002 a ont:Patient ;
     rdfs:label "Patient P002" ;
@@ -215,8 +214,7 @@ res:Patient_P002 a ont:Patient ;
     ont:receivedTherapy res:Therapy_P002_Cisplatin ;
     ont:sex "F" ;
     ont:smokingPackYears 20 ;
-    ont:testedForBiomarker res:Biomarker_KRAS ;
-    ont:usesDrug res:Drug_Cisplatin .
+    ont:testedForBiomarker res:Biomarker_KRAS .
 
 res:Patient_P003 a ont:Patient ;
     rdfs:label "Patient P003" ;
@@ -229,8 +227,7 @@ res:Patient_P003 a ont:Patient ;
     ont:receivedTherapy res:Therapy_P003_Alectinib ;
     ont:sex "M" ;
     ont:smokingPackYears 60 ;
-    ont:testedForBiomarker res:Biomarker_ALK ;
-    ont:usesDrug res:Drug_Alectinib .
+    ont:testedForBiomarker res:Biomarker_ALK .
 
 res:Patient_P004 a ont:Patient ;
     rdfs:label "Patient P004" ;
@@ -243,8 +240,7 @@ res:Patient_P004 a ont:Patient ;
     ont:receivedTherapy res:Therapy_P004_Erlotinib ;
     ont:sex "F" ;
     ont:smokingPackYears 5 ;
-    ont:testedForBiomarker res:Biomarker_EGFR ;
-    ont:usesDrug res:Drug_Erlotinib .
+    ont:testedForBiomarker res:Biomarker_EGFR .
 
 res:Patient_P005 a ont:Patient ;
     rdfs:label "Patient P005" ;
@@ -257,8 +253,7 @@ res:Patient_P005 a ont:Patient ;
     ont:receivedTherapy res:Therapy_P005_Pembrolizumab ;
     ont:sex "M" ;
     ont:smokingPackYears 40 ;
-    ont:testedForBiomarker res:Biomarker_PD-L1 ;
-    ont:usesDrug res:Drug_Pembrolizumab .
+    ont:testedForBiomarker res:Biomarker_PD-L1 .
 
 res:Patient_P006 a ont:Patient ;
     rdfs:label "Patient P006" ;
@@ -271,8 +266,7 @@ res:Patient_P006 a ont:Patient ;
     ont:receivedTherapy res:Therapy_P006_nan ;
     ont:sex "F" ;
     ont:smokingPackYears 10 ;
-    ont:testedForBiomarker res:Biomarker_BRAF ;
-    ont:usesDrug res:Drug_nan .
+    ont:testedForBiomarker res:Biomarker_BRAF .
 
 ont:ClinicalRule a owl:Class ;
     rdfs:label "Clinical Rule" ;
@@ -285,10 +279,6 @@ ont:EGFR_Targeted_Therapy a ont:TargetedTherapy ;
 ont:Gene a owl:Class ;
     rdfs:label "Gene" ;
     rdfs:comment "A gene" .
-
-ont:Histology a owl:Class ;
-    rdfs:label "Histology" ;
-    rdfs:comment "Histological type of cancer" .
 
 ont:Mutation a owl:Class ;
     rdfs:label "Mutation" ;
@@ -303,107 +293,152 @@ ont:TargetedTherapy a owl:Class ;
     rdfs:comment "Targeted therapy treatment" ;
     rdfs:subClassOf ont:Therapy .
 
-res:Biomarker_ALK rdfs:label "Biomarker ALK" .
+res:Biomarker_ALK a ont:Biomarker ;
+    rdfs:label "Biomarker ALK" .
 
-res:Biomarker_BRAF rdfs:label "Biomarker BRAF" .
+res:Biomarker_BRAF a ont:Biomarker ;
+    rdfs:label "Biomarker BRAF" .
 
-res:Biomarker_KRAS rdfs:label "Biomarker KRAS" .
+res:Biomarker_KRAS a ont:Biomarker ;
+    rdfs:label "Biomarker KRAS" .
 
-res:Biomarker_PD-L1 rdfs:label "Biomarker PD-L1" .
+res:Biomarker_PD-L1 a ont:Biomarker ;
+    rdfs:label "Biomarker PD-L1" .
 
-res:Drug_Alectinib rdfs:label "Drug Alectinib" .
+res:Drug_Alectinib a ont:Drug ;
+    rdfs:label "Drug Alectinib" .
 
-res:Drug_Cisplatin rdfs:label "Drug Cisplatin" .
+res:Drug_Cisplatin a ont:Drug ;
+    rdfs:label "Drug Cisplatin" .
 
-res:Drug_Erlotinib rdfs:label "Drug Erlotinib" .
+res:Drug_Erlotinib a ont:Drug ;
+    rdfs:label "Drug Erlotinib" .
 
-res:Drug_Osimertinib rdfs:label "Drug Osimertinib" .
+res:Drug_Osimertinib a ont:Drug ;
+    rdfs:label "Drug Osimertinib" .
 
-res:Drug_Pembrolizumab rdfs:label "Drug Pembrolizumab" .
+res:Drug_Pembrolizumab a ont:Drug ;
+    rdfs:label "Drug Pembrolizumab" .
 
-res:Drug_nan rdfs:label "Drug nan" .
+res:Drug_nan a ont:Drug ;
+    rdfs:label "Drug nan" .
 
-res:Outcome_P001_Partial_Response rdfs:label "Outcome P001 Partial Response" .
+res:Outcome_P001_Partial_Response a ont:Outcome ;
+    rdfs:label "Outcome P001 Partial Response" .
 
-res:Outcome_P002_Stable rdfs:label "Outcome P002 Stable" .
+res:Outcome_P002_Stable a ont:Outcome ;
+    rdfs:label "Outcome P002 Stable" .
 
-res:Outcome_P003_Complete_Response rdfs:label "Outcome P003 Complete Response" .
+res:Outcome_P003_Complete_Response a ont:Outcome ;
+    rdfs:label "Outcome P003 Complete Response" .
 
-res:Outcome_P004_Partial_Response rdfs:label "Outcome P004 Partial Response" .
+res:Outcome_P004_Partial_Response a ont:Outcome ;
+    rdfs:label "Outcome P004 Partial Response" .
 
-res:Outcome_P005_Partial_Response rdfs:label "Outcome P005 Partial Response" .
+res:Outcome_P005_Partial_Response a ont:Outcome ;
+    rdfs:label "Outcome P005 Partial Response" .
 
-res:Outcome_P006_Disease_Free rdfs:label "Outcome P006 Disease Free" .
+res:Outcome_P006_Disease_Free a ont:Outcome ;
+    rdfs:label "Outcome P006 Disease Free" .
 
-res:Stage_I rdfs:label "Stage I" .
+res:Stage_I a ont:Stage ;
+    rdfs:label "Stage I" .
 
-res:Stage_II rdfs:label "Stage II" .
+res:Stage_II a ont:Stage ;
+    rdfs:label "Stage II" .
 
-res:Therapy_P001_Osimertinib rdfs:label "Therapy P001 Osimertinib" .
+res:Therapy_P001_Osimertinib a ont:Therapy ;
+    rdfs:label "Therapy P001 Osimertinib" ;
+    ont:usesDrug res:Drug_Osimertinib .
 
-res:Therapy_P002_Cisplatin rdfs:label "Therapy P002 Cisplatin" .
+res:Therapy_P002_Cisplatin a ont:Therapy ;
+    rdfs:label "Therapy P002 Cisplatin" ;
+    ont:usesDrug res:Drug_Cisplatin .
 
-res:Therapy_P003_Alectinib rdfs:label "Therapy P003 Alectinib" .
+res:Therapy_P003_Alectinib a ont:Therapy ;
+    rdfs:label "Therapy P003 Alectinib" ;
+    ont:usesDrug res:Drug_Alectinib .
 
-res:Therapy_P004_Erlotinib rdfs:label "Therapy P004 Erlotinib" .
+res:Therapy_P004_Erlotinib a ont:Therapy ;
+    rdfs:label "Therapy P004 Erlotinib" ;
+    ont:usesDrug res:Drug_Erlotinib .
 
-res:Therapy_P005_Pembrolizumab rdfs:label "Therapy P005 Pembrolizumab" .
+res:Therapy_P005_Pembrolizumab a ont:Therapy ;
+    rdfs:label "Therapy P005 Pembrolizumab" ;
+    ont:usesDrug res:Drug_Pembrolizumab .
 
-res:Therapy_P006_nan rdfs:label "Therapy P006 nan" .
+res:Therapy_P006_nan a ont:Therapy ;
+    rdfs:label "Therapy P006 nan" ;
+    ont:usesDrug res:Drug_nan .
 
-res:Tumor_P001 rdfs:label "Tumor P001" .
+res:Tumor_P001 a ont:Tumor ;
+    rdfs:label "Tumor P001" .
 
-res:Tumor_P002 rdfs:label "Tumor P002" .
+res:Tumor_P002 a ont:Tumor ;
+    rdfs:label "Tumor P002" .
 
-res:Tumor_P003 rdfs:label "Tumor P003" .
+res:Tumor_P003 a ont:Tumor ;
+    rdfs:label "Tumor P003" .
 
-res:Tumor_P004 rdfs:label "Tumor P004" .
+res:Tumor_P004 a ont:Tumor ;
+    rdfs:label "Tumor P004" .
 
-res:Tumor_P005 rdfs:label "Tumor P005" .
+res:Tumor_P005 a ont:Tumor ;
+    rdfs:label "Tumor P005" .
 
-res:Tumor_P006 rdfs:label "Tumor P006" .
+res:Tumor_P006 a ont:Tumor ;
+    rdfs:label "Tumor P006" .
 
 ont:Disease a owl:Class ;
     rdfs:label "Disease" ;
     rdfs:comment "A disease or medical condition" .
 
-ont:Drug a owl:Class ;
-    rdfs:label "Drug" ;
-    rdfs:comment "A pharmaceutical drug" .
-
 ont:Guideline a owl:Class ;
     rdfs:label "Guideline" ;
     rdfs:comment "Clinical guideline" .
 
-res:Biomarker_EGFR rdfs:label "Biomarker EGFR" .
+res:Biomarker_EGFR a ont:Biomarker ;
+    rdfs:label "Biomarker EGFR" .
 
-res:Histology_Squamous rdfs:label "Histology Squamous" .
+res:Histology_Squamous a ont:Histology ;
+    rdfs:label "Histology Squamous" .
 
-res:Stage_III rdfs:label "Stage III" .
+res:Stage_III a ont:Stage ;
+    rdfs:label "Stage III" .
 
-res:Stage_IV rdfs:label "Stage IV" .
+res:Stage_IV a ont:Stage ;
+    rdfs:label "Stage IV" .
 
-ont:Biomarker a owl:Class ;
-    rdfs:label "Biomarker" ;
-    rdfs:comment "Biological marker for genomic analysis" .
-
-ont:Outcome a owl:Class ;
-    rdfs:label "Outcome" ;
-    rdfs:comment "Treatment outcome" .
-
-ont:Tumor a owl:Class ;
-    rdfs:label "Tumor" ;
-    rdfs:comment "A tumor or malignant growth" .
+ont:Histology a owl:Class ;
+    rdfs:label "Histology" ;
+    rdfs:comment "Histological type of cancer" .
 
 ont:Test a owl:Class ;
     rdfs:label "Test" ;
     rdfs:comment "A clinical or diagnostic test" .
 
-res:Histology_Adenocarcinoma rdfs:label "Histology Adenocarcinoma" .
+res:Histology_Adenocarcinoma a ont:Histology ;
+    rdfs:label "Histology Adenocarcinoma" .
+
+ont:Biomarker a owl:Class ;
+    rdfs:label "Biomarker" ;
+    rdfs:comment "Biological marker for genomic analysis" .
+
+ont:Drug a owl:Class ;
+    rdfs:label "Drug" ;
+    rdfs:comment "A pharmaceutical drug" .
+
+ont:Outcome a owl:Class ;
+    rdfs:label "Outcome" ;
+    rdfs:comment "Treatment outcome" .
 
 ont:Stage a owl:Class ;
     rdfs:label "Stage" ;
     rdfs:comment "Cancer staging classification" .
+
+ont:Tumor a owl:Class ;
+    rdfs:label "Tumor" ;
+    rdfs:comment "A tumor or malignant growth" .
 
 ont:Therapy a owl:Class ;
     rdfs:label "Therapy" ;

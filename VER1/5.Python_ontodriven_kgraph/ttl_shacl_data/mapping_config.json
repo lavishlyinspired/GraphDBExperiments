@@ -29,8 +29,16 @@
     "subject": "Patient_{patient_id}",
     "object_links": {
       "receivedTherapy": "Therapy_{patient_id}_{drug}",
-      "usesDrug": "Drug_{drug}",
       "hasOutcome": "Outcome_{patient_id}_{response}"
+    }
+  },
+
+  "therapies": {
+    "file": "ttl_shacl_data/lung_treatments.csv",
+    "subject": "Therapy_{patient_id}_{drug}",
+    "type": "Therapy",
+    "object_links": {
+      "usesDrug": "Drug_{drug}"
     }
   }
 }

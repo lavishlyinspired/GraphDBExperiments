@@ -93,13 +93,18 @@ for section in config.values():
             obj = make_uri(tmpl, row)
             g.add((subj, ONT[prop], obj))
             
+            # Extract object type from template (e.g., "Drug" from "Drug_{drug}")
+            obj_type = tmpl.split("_")[0]
+            
+            # Add rdf:type for the linked object (CRITICAL for Neo4j!)
+            g.add((obj, RDF.type, ONT[obj_type]))
+            
             # Add rdfs:label for linked objects
             obj_label = make_label(str(obj))
             g.add((obj, RDFS.label, Literal(obj_label)))
 
-            label = tmpl.split("_")[0]
             cypher_lines.append(
-                f"MERGE (o:{label} {{id:'{obj.split('/')[-1]}'}})"
+                f"MERGE (o:{obj_type} {{id:'{obj.split('/')[-1]}'}})"
             )
             cypher_lines.append(
                 f"SET o.label='{obj_label}'"
