@@ -45,19 +45,19 @@ ont:Pathology a owl:Class ;
 
 ont:Stage_I a ont:Stage ;
     rdfs:label "Stage I" ;
-    ont:stageName "I" .
+    ont:name "I" .
 
 ont:Stage_II a ont:Stage ;
     rdfs:label "Stage II" ;
-    ont:stageName "II" .
+    ont:name "II" .
 
 ont:Stage_III a ont:Stage ;
     rdfs:label "Stage III" ;
-    ont:stageName "III" .
+    ont:name "III" .
 
 ont:Stage_IV a ont:Stage ;
     rdfs:label "Stage IV" ;
-    ont:stageName "IV" .
+    ont:name "IV" .
 
 ont:Surgery a owl:Class ;
     rdfs:label "Surgery" ;
@@ -70,23 +70,17 @@ ont:age a owl:DatatypeProperty ;
     rdfs:domain ont:Patient ;
     rdfs:range xsd:integer .
 
+ont:description a owl:DatatypeProperty ;
+    rdfs:label "description" ;
+    rdfs:comment "Description of an entity" ;
+    rdfs:domain owl:Thing ;
+    rdfs:range xsd:string .
+
 ont:diagnosedWith a owl:ObjectProperty ;
     rdfs:label "diagnosed with" ;
     rdfs:comment "Patient diagnosed with a disease" ;
     rdfs:domain ont:Patient ;
     rdfs:range ont:Disease .
-
-ont:drugName a owl:DatatypeProperty ;
-    rdfs:label "drug name" ;
-    rdfs:comment "Pharmaceutical drug name" ;
-    rdfs:domain ont:Drug ;
-    rdfs:range xsd:string .
-
-ont:geneName a owl:DatatypeProperty ;
-    rdfs:label "gene name" ;
-    rdfs:comment "Gene symbol or name" ;
-    rdfs:domain ont:Gene ;
-    rdfs:range xsd:string .
 
 ont:hasGene a owl:ObjectProperty ;
     rdfs:label "has gene" ;
@@ -124,10 +118,10 @@ ont:hasTumor a owl:ObjectProperty ;
     rdfs:domain ont:Patient ;
     rdfs:range ont:Tumor .
 
-ont:histologyName a owl:DatatypeProperty ;
-    rdfs:label "histology name" ;
-    rdfs:comment "Histological classification name" ;
-    rdfs:domain ont:Histology ;
+ont:name a owl:DatatypeProperty ;
+    rdfs:label "name" ;
+    rdfs:comment "Common name property for entities" ;
+    rdfs:domain owl:Thing ;
     rdfs:range xsd:string .
 
 ont:patientId a owl:DatatypeProperty ;
@@ -165,12 +159,6 @@ ont:smokingPackYears a owl:DatatypeProperty ;
     rdfs:comment "Cumulative smoking exposure in pack-years" ;
     rdfs:domain ont:Patient ;
     rdfs:range xsd:float .
-
-ont:stageName a owl:DatatypeProperty ;
-    rdfs:label "stage name" ;
-    rdfs:comment "Cancer stage designation" ;
-    rdfs:domain ont:Stage ;
-    rdfs:range xsd:string .
 
 ont:survivalMonths a owl:DatatypeProperty ;
     rdfs:label "survival months" ;
@@ -288,13 +276,21 @@ ont:EGFR_Targeted_Therapy a ont:TargetedTherapy ;
     rdfs:label "EGFR Targeted Therapy" ;
     ont:usesDrug ont:Osimertinib .
 
+ont:Gene a owl:Class ;
+    rdfs:label "Gene" ;
+    rdfs:comment "A gene" .
+
+ont:Histology a owl:Class ;
+    rdfs:label "Histology" ;
+    rdfs:comment "Histological type of cancer" .
+
 ont:Mutation a owl:Class ;
     rdfs:label "Mutation" ;
     rdfs:comment "Genetic mutation" .
 
 ont:Osimertinib a ont:Drug ;
     rdfs:label "Osimertinib" ;
-    ont:drugName "Osimertinib" .
+    ont:name "Osimertinib" .
 
 ont:TargetedTherapy a owl:Class ;
     rdfs:label "Targeted Therapy" ;
@@ -305,25 +301,17 @@ ont:Disease a owl:Class ;
     rdfs:label "Disease" ;
     rdfs:comment "A disease or medical condition" .
 
-ont:Gene a owl:Class ;
-    rdfs:label "Gene" ;
-    rdfs:comment "A gene" .
+ont:Drug a owl:Class ;
+    rdfs:label "Drug" ;
+    rdfs:comment "A pharmaceutical drug" .
 
 ont:Guideline a owl:Class ;
     rdfs:label "Guideline" ;
     rdfs:comment "Clinical guideline" .
 
-ont:Histology a owl:Class ;
-    rdfs:label "Histology" ;
-    rdfs:comment "Histological type of cancer" .
-
 ont:Biomarker a owl:Class ;
     rdfs:label "Biomarker" ;
     rdfs:comment "Biological marker for genomic analysis" .
-
-ont:Drug a owl:Class ;
-    rdfs:label "Drug" ;
-    rdfs:comment "A pharmaceutical drug" .
 
 ont:Outcome a owl:Class ;
     rdfs:label "Outcome" ;
