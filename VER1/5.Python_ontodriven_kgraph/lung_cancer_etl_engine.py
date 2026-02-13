@@ -6,8 +6,8 @@ from rdflib.namespace import RDF
 BASE = Namespace("http://lungkg.org/resource/")
 ONT  = Namespace("http://lungkg.org/ontology#")
 
-ONTOLOGY = "ttl_shacl_data/lung_cancer_kg_schema.ttl"
-MAPPING  = "mapping_config.json"
+ONTOLOGY = "version26\\experiments\\GraphDBExperiments\\VER1\\5.Python_ontodriven_kgraph\\ttl_shacl_data\\lung_cancer_kg_schema.ttl"
+MAPPING  = "version26\\experiments\\GraphDBExperiments\\VER1\\5.Python_ontodriven_kgraph\\ttl_shacl_data\\mapping_config.json"
 
 g = Graph()
 g.parse(ONTOLOGY)
@@ -73,9 +73,9 @@ for section in config.values():
 # Save outputs
 ########################################
 
-g.serialize("lung_cancer_instances.ttl")
+g.serialize("version26\\experiments\\GraphDBExperiments\\VER1\\5.Python_ontodriven_kgraph\\output\\lung_cancer_instances_out.ttl")
 
-with open("auto_generated.cypher","w") as f:
+with open("version26\\experiments\\GraphDBExperiments\\VER1\\5.Python_ontodriven_kgraph\\output\\auto_generated.cypher","w") as f:
     f.write("\n".join(cypher_lines))
 
 print("✓ RDF saved")
