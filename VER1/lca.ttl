@@ -1,0 +1,61 @@
+@prefix : <http://example.org/lungCancer#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Patient rdf:type owl:Class .
+:LungCancer rdf:type owl:Class .
+:CancerType rdf:type owl:Class .
+:Stage rdf:type owl:Class .
+:Symptom rdf:type owl:Class .
+:Treatment rdf:type owl:Class .
+:Hospital rdf:type owl:Class .
+
+:hasDiagnosis rdf:type owl:ObjectProperty ;
+    rdfs:domain :Patient ;
+    rdfs:range :LungCancer .
+
+:hasType rdf:type owl:ObjectProperty ;
+    rdfs:domain :LungCancer ;
+    rdfs:range :CancerType .
+
+:hasStage rdf:type owl:ObjectProperty ;
+    rdfs:domain :LungCancer ;
+    rdfs:range :Stage .
+
+:hasSymptom rdf:type owl:ObjectProperty ;
+    rdfs:domain :Patient ;
+    rdfs:range :Symptom .
+
+:receivesTreatment rdf:type owl:ObjectProperty ;
+    rdfs:domain :Patient ;
+    rdfs:range :Treatment .
+
+:treatedAt rdf:type owl:ObjectProperty ;
+    rdfs:domain :Patient ;
+    rdfs:range :Hospital .
+
+:hasName rdf:type owl:DatatypeProperty .
+:age rdf:type owl:DatatypeProperty .
+:survivalRate rdf:type owl:DatatypeProperty .
+
+### Sample Individuals
+
+:John rdf:type :Patient ;
+    :hasName "John" ;
+    :age 65 ;
+    :hasDiagnosis :LC1 ;
+    :hasSymptom :Cough ;
+    :receivesTreatment :Chemo ;
+    :treatedAt :CityHospital .
+
+:LC1 rdf:type :LungCancer ;
+    :hasType :NSCLC ;
+    :hasStage :StageIII .
+
+:NSCLC rdf:type :CancerType .
+:StageIII rdf:type :Stage .
+:Cough rdf:type :Symptom .
+:Chemo rdf:type :Treatment .
+:CityHospital rdf:type :Hospital .
