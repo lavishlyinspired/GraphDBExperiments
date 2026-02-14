@@ -112,8 +112,56 @@
     rdfs:label "Clinical Rule" ;
     rdfs:comment "Clinical decision rule" .
 
+:Article rdf:type owl:Class ;
+    rdfs:label "Article" ;
+    rdfs:comment "Biomedical literature or case report" .
+
+:Entity rdf:type owl:Class ;
+    rdfs:label "Entity" ;
+    rdfs:comment "Named entity extracted from text" .
+
 #################################################
 # Datatype Properties
+#################################################
+
+:uri rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Article ;
+    rdfs:range xsd:string ;
+    rdfs:label "URI" ;
+    rdfs:comment "Article URI or URL" .
+
+:title rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Article ;
+    rdfs:range xsd:string ;
+    rdfs:label "title" ;
+    rdfs:comment "Article title" .
+
+:body rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Article ;
+    rdfs:range xsd:string ;
+    rdfs:label "body" ;
+    rdfs:comment "Article body text" .
+
+:publicationDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Article ;
+    rdfs:range xsd:date ;
+    rdfs:label "publication date" ;
+    rdfs:comment "Article publication date" .
+
+:entityType rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Entity ;
+    rdfs:range xsd:string ;
+    rdfs:label "entity type" ;
+    rdfs:comment "Type of named entity (PERSON, LOCATION, etc.)" .
+
+:salience rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Entity ;
+    rdfs:range xsd:float ;
+    rdfs:label "salience" ;
+    rdfs:comment "Entity importance score from NLP" .
+
+#################################################
+# Datatype Properties (continued)
 #################################################
 
 :patientId rdf:type owl:DatatypeProperty ;
@@ -245,6 +293,24 @@
     rdfs:range :Therapy ;
     rdfs:label "triggers" ;
     rdfs:comment "Clinical rule triggers a therapy recommendation" .
+
+:refersTo rdf:type owl:ObjectProperty ;
+    rdfs:domain :Article ;
+    rdfs:range owl:Thing ;
+    rdfs:label "refers to" ;
+    rdfs:comment "Article refers to an ontology concept" .
+
+:mentions rdf:type owl:ObjectProperty ;
+    rdfs:domain :Article ;
+    rdfs:range :Entity ;
+    rdfs:label "mentions" ;
+    rdfs:comment "Article mentions a named entity" .
+
+:about rdf:type owl:ObjectProperty ;
+    rdfs:domain :Article ;
+    rdfs:range owl:Thing ;
+    rdfs:label "about" ;
+    rdfs:comment "Article is about a topic or concept" .
 
 #################################################
 # DSS Rule Examples (optional individuals)

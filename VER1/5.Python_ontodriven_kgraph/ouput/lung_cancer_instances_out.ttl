@@ -3,6 +3,77 @@
 @prefix res: <http://lungkg.org/resource/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<http://lungkg.org/resource/Article_https://pmc.ncbi.nlm.nih.gov/articles/PMC4971274/> a ont:Article ;
+    rdfs:label "" ;
+    ont:about ont:LungCancer ;
+    ont:body "This case involves a 74-year-old patient with three synchronous primary lung tumors in the same lobe — squamous cell carcinoma, neuroendocrine carcinoma, and acinar adenocarcinoma — diagnosed via PET/CT and confirmed by histology after lobectomy and lymphadenectomy. Chronic symptoms included weight loss and fatigue, with a long history of smoking and COPD. The patient was classified as Stage IIIA and underwent surgical treatment with individualized postoperative care." ;
+    ont:publicationDate "2021-01-11"^^xsd:date ;
+    ont:refersTo res:Histology_Adenocarcinoma,
+        res:Histology_Neuroendocrine,
+        res:Histology_Squamous_Cell_Carcinoma,
+        res:Stage_IIIA,
+        res:Therapy_Lobectomy ;
+    ont:title "A case of three synchronous primary lung cancers within the same lung lobe" ;
+    ont:uri "https://pmc.ncbi.nlm.nih.gov/articles/PMC4971274/" .
+
+<http://lungkg.org/resource/Article_https://pmc.ncbi.nlm.nih.gov/articles/PMC7919120/> a ont:Article ;
+    rdfs:label "" ;
+    ont:about ont:LungCancer ;
+    ont:body "A 64-year-old male former smoker presented with three separate lung nodules in the right lower lobe. CT and PET scans showed distinct lesions with different histologies: keratinizing squamous cell carcinoma, solid predominant adenocarcinoma, and small cell lung cancer. Video-assisted thoracoscopic surgery (VATS) was performed, and all tumors were resected. Postoperative adjuvant chemotherapy was given, and the patient remained without recurrence at one year follow-up. This rare synchronous presentation shows the value of individualized multimodal care." ;
+    ont:publicationDate "2024-12-13"^^xsd:date ;
+    ont:refersTo res:Histology_Adenocarcinoma,
+        res:Histology_Small_Cell_Lung_Cancer,
+        res:Histology_Squamous_Cell_Carcinoma,
+        res:Outcome_Recurrence,
+        res:Therapy_Chemotherapy,
+        res:Therapy_Surgery,
+        res:Therapy_Thoracoscopic,
+        res:Therapy_Vats ;
+    ont:title "Synchronous triple primary lung cancer with three different histological subtypes" ;
+    ont:uri "https://pmc.ncbi.nlm.nih.gov/articles/PMC7919120/" .
+
+<http://lungkg.org/resource/Article_https://pmc.ncbi.nlm.nih.gov/articles/PMC8854358/> a ont:Article ;
+    rdfs:label "" ;
+    ont:about ont:LungCancer ;
+    ont:body "This case describes a 73-year-old male with combined small cell lung carcinoma (CSCLC) and adenocarcinoma discovered during a routine check-up. Imaging revealed a right lung mass with no symptoms, and surgical lobectomy was performed; pathology confirmed both components. Postoperative recovery was uneventful, and the patient remained well for at least two weeks after surgery. The report emphasizes early detection and surgical treatment for this rare tumor variant." ;
+    ont:publicationDate "2024-02-29"^^xsd:date ;
+    ont:refersTo res:Histology_Adenocarcinoma,
+        res:Therapy_Lobectomy,
+        res:Therapy_Surgery ;
+    ont:title "Case Report: Combined Small Cell Lung Carcinoma with Adenocarcinoma" ;
+    ont:uri "https://pmc.ncbi.nlm.nih.gov/articles/PMC8854358/" .
+
+<http://lungkg.org/resource/Article_https://pmc.ncbi.nlm.nih.gov/articles/PMC9392234/> a ont:Article ;
+    rdfs:label "" ;
+    ont:about ont:LungCancer ;
+    ont:body "This report presents a 76-year-old man with three distinct primary lung cancers (adenocarcinoma, squamous cell carcinoma, and small cell carcinoma) observed over time. The first two tumors were managed with stereotactic radiosurgery because the patient declined surgery; a third new small cell lung cancer later developed and was treated with chemoradiation. The case highlights the importance of accurate differentiation of new lesions as multiple primaries rather than metastases and careful evaluation of risk factors such as smoking and occupational exposures." ;
+    ont:publicationDate "2022-08-19"^^xsd:date ;
+    ont:refersTo res:Histology_Adenocarcinoma,
+        res:Histology_Small_Cell_Lung_Cancer,
+        res:Histology_Squamous_Cell_Carcinoma,
+        res:Therapy_Chemoradiation,
+        res:Therapy_Stereotactic_Radiosurgery,
+        res:Therapy_Surgery ;
+    ont:title "Triple primary lung cancer: a case report" ;
+    ont:uri "https://pmc.ncbi.nlm.nih.gov/articles/PMC9392234/" .
+
+<http://lungkg.org/resource/Article_https://pmc.ncbi.nlm.nih.gov/articles/PMC9641134/> a ont:Article ;
+    rdfs:label "" ;
+    ont:about ont:LungCancer ;
+    ont:body "A patient presented with left lung masses that biopsy showed to contain two histologic components: 70% small cell lung cancer (SCLC) and 30% enteric adenocarcinoma. PET-CT confirmed additional lung nodules, and multidisciplinary treatment included EGFR-tyrosine kinase inhibitor (TKI) and EP (etoposide + cisplatin) chemotherapy. The patient responded well with 11 months of progression-free survival, demonstrating that targeted and combination therapy may be effective in rare CSCLC subsets." ;
+    ont:publicationDate "2023-02-11"^^xsd:date ;
+    ont:refersTo res:Biomarker_EGFR,
+        res:Drug_Cisplatin,
+        res:Histology_Adenocarcinoma,
+        res:Histology_Sclc,
+        res:Histology_Small_Cell_Lung_Cancer,
+        res:Outcome_Progression-Free_Survival,
+        res:Test_Biopsy,
+        res:Test_Pet-Ct,
+        res:Therapy_Chemotherapy ;
+    ont:title "Pulmonary combined small cell carcinoma and enteric adenocarcinoma" ;
+    ont:uri "https://pmc.ncbi.nlm.nih.gov/articles/PMC9641134/" .
+
 res:Patient_P001 a ont:Patient ;
     rdfs:label "Patient P001" ;
     ont:age 67 ;
@@ -116,9 +187,6 @@ res:Biomarker_PD-L1 a ont:Biomarker ;
 res:Drug_Alectinib a ont:Drug ;
     rdfs:label "Drug Alectinib" .
 
-res:Drug_Cisplatin a ont:Drug ;
-    rdfs:label "Drug Cisplatin" .
-
 res:Drug_Erlotinib a ont:Drug ;
     rdfs:label "Drug Erlotinib" .
 
@@ -164,6 +232,12 @@ res:GenomicTest_P005 a ont:GenomicTest ;
 res:GenomicTest_P006 a ont:GenomicTest ;
     rdfs:label "GenomicTest P006" .
 
+res:Histology_Neuroendocrine a ont:Histology ;
+    rdfs:label "Histology Neuroendocrine" .
+
+res:Histology_Sclc a ont:Histology ;
+    rdfs:label "Histology Sclc" .
+
 res:Mutation_EML4-ALK a ont:Mutation ;
     rdfs:label "Mutation EML4-ALK" .
 
@@ -200,6 +274,24 @@ res:Outcome_P005_Partial_Response a ont:Outcome ;
 res:Outcome_P006_Disease_Free a ont:Outcome ;
     rdfs:label "Outcome P006 Disease Free" .
 
+res:Outcome_Progression-Free_Survival a ont:Outcome ;
+    rdfs:label "Outcome Progression-Free_Survival" .
+
+res:Outcome_Recurrence a ont:Outcome ;
+    rdfs:label "Outcome Recurrence" .
+
+res:Stage_IIIA a ont:Stage ;
+    rdfs:label "Stage IIIA" .
+
+res:Test_Biopsy a ont:Test ;
+    rdfs:label "Test Biopsy" .
+
+res:Test_Pet-Ct a ont:Test ;
+    rdfs:label "Test Pet-Ct" .
+
+res:Therapy_Chemoradiation a ont:Therapy ;
+    rdfs:label "Therapy Chemoradiation" .
+
 res:Therapy_P001_Osimertinib a ont:Therapy ;
     rdfs:label "Therapy P001 Osimertinib" ;
     ont:usesDrug res:Drug_Osimertinib .
@@ -223,6 +315,15 @@ res:Therapy_P005_Pembrolizumab a ont:Therapy ;
 res:Therapy_P006_nan a ont:Therapy ;
     rdfs:label "Therapy P006 nan" ;
     ont:usesDrug res:Drug_nan .
+
+res:Therapy_Stereotactic_Radiosurgery a ont:Therapy ;
+    rdfs:label "Therapy Stereotactic_Radiosurgery" .
+
+res:Therapy_Thoracoscopic a ont:Therapy ;
+    rdfs:label "Therapy Thoracoscopic" .
+
+res:Therapy_Vats a ont:Therapy ;
+    rdfs:label "Therapy Vats" .
 
 res:Tumor_P001 a ont:Tumor ;
     rdfs:label "Tumor P001" ;
@@ -254,17 +355,35 @@ res:Tumor_P006 a ont:Tumor ;
     ont:hasHistology res:Histology_Adenocarcinoma ;
     ont:hasStage res:Stage_I .
 
-res:Biomarker_EGFR a ont:Biomarker ;
-    rdfs:label "Biomarker EGFR" ;
-    ont:hasGene res:Gene_EGFR ;
-    ont:hasMutation res:Mutation_Ex19del,
-        res:Mutation_L858R .
+res:Drug_Cisplatin a ont:Drug ;
+    rdfs:label "Drug Cisplatin" .
 
 res:Stage_I a ont:Stage ;
     rdfs:label "Stage I" .
 
 res:Stage_II a ont:Stage ;
     rdfs:label "Stage II" .
+
+res:Therapy_Chemotherapy a ont:Therapy ;
+    rdfs:label "Therapy Chemotherapy" .
+
+res:Therapy_Lobectomy a ont:Therapy ;
+    rdfs:label "Therapy Lobectomy" .
+
+res:Biomarker_EGFR a ont:Biomarker ;
+    rdfs:label "Biomarker EGFR" ;
+    ont:hasGene res:Gene_EGFR ;
+    ont:hasMutation res:Mutation_Ex19del,
+        res:Mutation_L858R .
+
+res:Histology_Small_Cell_Lung_Cancer a ont:Histology ;
+    rdfs:label "Histology Small_Cell_Lung_Cancer" .
+
+res:Histology_Squamous_Cell_Carcinoma a ont:Histology ;
+    rdfs:label "Histology Squamous_Cell_Carcinoma" .
+
+res:Therapy_Surgery a ont:Therapy ;
+    rdfs:label "Therapy Surgery" .
 
 res:Histology_Squamous a ont:Histology ;
     rdfs:label "Histology Squamous" .

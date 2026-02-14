@@ -316,3 +316,141 @@ SET n.label='Therapy P006 nan'
 MERGE (o:Drug {id:'Drug_nan'})
 SET o.label='Drug nan'
 MERGE (n)-[:USESDRUG]->(o)
+MERGE (n:Article {id:''})
+SET n.label=''
+SET n.uri='https://pmc.ncbi.nlm.nih.gov/articles/PMC9392234/'
+SET n.title='Triple primary lung cancer: a case report'
+SET n.body='This report presents a 76-year-old man with three distinct primary lung cancers (adenocarcinoma, squamous cell carcinoma, and small cell carcinoma) observed over time. The first two tumors were managed with stereotactic radiosurgery because the patient declined surgery; a third new small cell lung cancer later developed and was treated with chemoradiation. The case highlights the importance of accurate differentiation of new lesions as multiple primaries rather than metastases and careful evaluation of risk factors such as smoking and occupational exposures.'
+SET n.publicationDate='2022-08-19'
+MERGE (o:LungCancer {id:'LungCancer'})
+SET o.label='LungCancer'
+MERGE (n)-[:ABOUT]->(o)
+MERGE (e:Histology {id:'Histology_Small_Cell_Lung_Cancer'})
+SET e.label='Histology Small_Cell_Lung_Cancer'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Histology {id:'Histology_Squamous_Cell_Carcinoma'})
+SET e.label='Histology Squamous_Cell_Carcinoma'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Histology {id:'Histology_Adenocarcinoma'})
+SET e.label='Histology Adenocarcinoma'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Therapy {id:'Therapy_Surgery'})
+SET e.label='Therapy Surgery'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Therapy {id:'Therapy_Stereotactic_Radiosurgery'})
+SET e.label='Therapy Stereotactic_Radiosurgery'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Therapy {id:'Therapy_Chemoradiation'})
+SET e.label='Therapy Chemoradiation'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (n:Article {id:''})
+SET n.label=''
+SET n.uri='https://pmc.ncbi.nlm.nih.gov/articles/PMC8854358/'
+SET n.title='Case Report: Combined Small Cell Lung Carcinoma with Adenocarcinoma'
+SET n.body='This case describes a 73-year-old male with combined small cell lung carcinoma (CSCLC) and adenocarcinoma discovered during a routine check-up. Imaging revealed a right lung mass with no symptoms, and surgical lobectomy was performed; pathology confirmed both components. Postoperative recovery was uneventful, and the patient remained well for at least two weeks after surgery. The report emphasizes early detection and surgical treatment for this rare tumor variant.'
+SET n.publicationDate='2024-02-29'
+MERGE (o:LungCancer {id:'LungCancer'})
+SET o.label='LungCancer'
+MERGE (n)-[:ABOUT]->(o)
+MERGE (e:Histology {id:'Histology_Adenocarcinoma'})
+SET e.label='Histology Adenocarcinoma'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Therapy {id:'Therapy_Lobectomy'})
+SET e.label='Therapy Lobectomy'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Therapy {id:'Therapy_Surgery'})
+SET e.label='Therapy Surgery'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (n:Article {id:''})
+SET n.label=''
+SET n.uri='https://pmc.ncbi.nlm.nih.gov/articles/PMC7919120/'
+SET n.title='Synchronous triple primary lung cancer with three different histological subtypes'
+SET n.body='A 64-year-old male former smoker presented with three separate lung nodules in the right lower lobe. CT and PET scans showed distinct lesions with different histologies: keratinizing squamous cell carcinoma, solid predominant adenocarcinoma, and small cell lung cancer. Video-assisted thoracoscopic surgery (VATS) was performed, and all tumors were resected. Postoperative adjuvant chemotherapy was given, and the patient remained without recurrence at one year follow-up. This rare synchronous presentation shows the value of individualized multimodal care.'
+SET n.publicationDate='2024-12-13'
+MERGE (o:LungCancer {id:'LungCancer'})
+SET o.label='LungCancer'
+MERGE (n)-[:ABOUT]->(o)
+MERGE (e:Histology {id:'Histology_Small_Cell_Lung_Cancer'})
+SET e.label='Histology Small_Cell_Lung_Cancer'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Histology {id:'Histology_Squamous_Cell_Carcinoma'})
+SET e.label='Histology Squamous_Cell_Carcinoma'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Histology {id:'Histology_Adenocarcinoma'})
+SET e.label='Histology Adenocarcinoma'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Therapy {id:'Therapy_Chemotherapy'})
+SET e.label='Therapy Chemotherapy'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Therapy {id:'Therapy_Thoracoscopic'})
+SET e.label='Therapy Thoracoscopic'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Therapy {id:'Therapy_Surgery'})
+SET e.label='Therapy Surgery'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Therapy {id:'Therapy_Vats'})
+SET e.label='Therapy Vats'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Outcome {id:'Outcome_Recurrence'})
+SET e.label='Outcome Recurrence'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (n:Article {id:''})
+SET n.label=''
+SET n.uri='https://pmc.ncbi.nlm.nih.gov/articles/PMC4971274/'
+SET n.title='A case of three synchronous primary lung cancers within the same lung lobe'
+SET n.body='This case involves a 74-year-old patient with three synchronous primary lung tumors in the same lobe — squamous cell carcinoma, neuroendocrine carcinoma, and acinar adenocarcinoma — diagnosed via PET/CT and confirmed by histology after lobectomy and lymphadenectomy. Chronic symptoms included weight loss and fatigue, with a long history of smoking and COPD. The patient was classified as Stage IIIA and underwent surgical treatment with individualized postoperative care.'
+SET n.publicationDate='2021-01-11'
+MERGE (o:LungCancer {id:'LungCancer'})
+SET o.label='LungCancer'
+MERGE (n)-[:ABOUT]->(o)
+MERGE (e:Histology {id:'Histology_Squamous_Cell_Carcinoma'})
+SET e.label='Histology Squamous_Cell_Carcinoma'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Histology {id:'Histology_Neuroendocrine'})
+SET e.label='Histology Neuroendocrine'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Histology {id:'Histology_Adenocarcinoma'})
+SET e.label='Histology Adenocarcinoma'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Stage {id:'Stage_IIIA'})
+SET e.label='Stage IIIA'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Therapy {id:'Therapy_Lobectomy'})
+SET e.label='Therapy Lobectomy'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (n:Article {id:''})
+SET n.label=''
+SET n.uri='https://pmc.ncbi.nlm.nih.gov/articles/PMC9641134/'
+SET n.title='Pulmonary combined small cell carcinoma and enteric adenocarcinoma'
+SET n.body='A patient presented with left lung masses that biopsy showed to contain two histologic components: 70% small cell lung cancer (SCLC) and 30% enteric adenocarcinoma. PET-CT confirmed additional lung nodules, and multidisciplinary treatment included EGFR-tyrosine kinase inhibitor (TKI) and EP (etoposide + cisplatin) chemotherapy. The patient responded well with 11 months of progression-free survival, demonstrating that targeted and combination therapy may be effective in rare CSCLC subsets.'
+SET n.publicationDate='2023-02-11'
+MERGE (o:LungCancer {id:'LungCancer'})
+SET o.label='LungCancer'
+MERGE (n)-[:ABOUT]->(o)
+MERGE (e:Histology {id:'Histology_Small_Cell_Lung_Cancer'})
+SET e.label='Histology Small_Cell_Lung_Cancer'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Histology {id:'Histology_Adenocarcinoma'})
+SET e.label='Histology Adenocarcinoma'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Histology {id:'Histology_Sclc'})
+SET e.label='Histology Sclc'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Biomarker {id:'Biomarker_EGFR'})
+SET e.label='Biomarker EGFR'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Drug {id:'Drug_Cisplatin'})
+SET e.label='Drug Cisplatin'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Therapy {id:'Therapy_Chemotherapy'})
+SET e.label='Therapy Chemotherapy'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Test {id:'Test_Pet-Ct'})
+SET e.label='Test Pet-Ct'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Test {id:'Test_Biopsy'})
+SET e.label='Test Biopsy'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Outcome {id:'Outcome_Progression-Free_Survival'})
+SET e.label='Outcome Progression-Free_Survival'
+MERGE (n)-[:REFERS_TO]->(e)

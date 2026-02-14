@@ -69,5 +69,21 @@
     "object_links": {
       "usesDrug": "Drug_{drug}"
     }
+  },
+
+  "articles": {
+    "file": "ttl_shacl_data/LungcancerArticle.csv",
+    "subject": "Article_{uri}",
+    "type": "Article",
+    "datatype_props": {
+      "uri": "uri",
+      "title": "title",
+      "body": "body",
+      "publicationDate": "date"
+    },
+    "nlp_extraction": true,
+    "object_links": {
+      "about": "LungCancer"
+    }
   }
 }

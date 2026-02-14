@@ -1,8 +1,10 @@
 import pandas as pd
 import json
+import hashlib
 from pathlib import Path
 from rdflib import Graph, Namespace, URIRef, Literal
-from rdflib.namespace import RDF, RDFS
+from rdflib.namespace import RDF, RDFS, XSD
+from nlp_processor import EntityExtractor, process_article_text
 
 BASE = Namespace("http://lungkg.org/resource/")
 ONT  = Namespace("http://lungkg.org/ontology#")
@@ -46,6 +48,9 @@ def get_entity_label(type_name, row, template):
 
 cypher_lines = []
 
+# Initialize NLP entity extractor
+entity_extractor = None  # Will be initialized after processing
+
 
 ########################################
 # Engine
@@ -53,7 +58,10 @@ cypher_lines = []
 
 config = json.load(open(MAPPING, 'r'))
 
-for section in config.values():
+# Initialize entity extractor for NLP processing
+entity_extractor = EntityExtractor(g, ONT, BASE)
+
+for section_name, section in config.items():
 
     # Resolve CSV file path relative to script directory
     csv_path = SCRIPT_DIR / section["file"]
@@ -81,9 +89,14 @@ for section in config.values():
 
         # datatype properties
         for prop, col in section.get("datatype_props", {}).items():
-            g.add((subj, ONT[prop], Literal(row[col])))
+            value = row[col]
+            # Handle date types
+            if prop == "publicationDate":
+                g.add((subj, ONT[prop], Literal(value, datatype=XSD.date)))
+            else:
+                g.add((subj, ONT[prop], Literal(value)))
             cypher_lines.append(
-                f"SET n.{prop}='{row[col]}'"
+                f"SET n.{prop}='{value}'"
             )
 
         # object links
@@ -120,6 +133,32 @@ for section in config.values():
             cypher_lines.append(
                 f"MERGE (n)-[:{prop.upper()}]->(o)"
             )
+        
+        # NLP entity extraction for articles
+        if section.get("nlp_extraction", False) and "body" in row:
+            article_body = row["body"]
+            if pd.notna(article_body) and len(str(article_body)) > 50:
+                # Extract entities from article text
+                entities = entity_extractor.extract_entities(str(article_body))
+                
+                # Create triples for extracted entities
+                entity_triples = entity_extractor.create_entity_triples(subj, entities)
+                for triple in entity_triples:
+                    g.add(triple)
+                
+                # Add cypher for entity linking
+                for concept_type, entity_list in entities.items():
+                    for entity_text, canonical_name in entity_list:
+                        entity_id = f"{concept_type}_{canonical_name}"
+                        cypher_lines.append(
+                            f"MERGE (e:{concept_type} {{id:'{entity_id}'}})"
+                        )
+                        cypher_lines.append(
+                            f"SET e.label='{concept_type} {canonical_name}'"
+                        )
+                        cypher_lines.append(
+                            f"MERGE (n)-[:REFERS_TO]->(e)"
+                        )
 
 
 ########################################
