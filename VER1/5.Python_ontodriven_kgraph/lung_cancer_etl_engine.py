@@ -24,7 +24,22 @@ g.bind("res", BASE)
 # Helpers
 ########################################
 
+def extract_article_id(uri):
+    """Extract PMC ID or create hash from article URI"""
+    import re
+    # Try to extract PMC ID
+    pmc_match = re.search(r'PMC\d+', uri)
+    if pmc_match:
+        return pmc_match.group(0)
+    # Fallback: use hash of URI
+    return hashlib.md5(uri.encode()).hexdigest()[:12]
+
 def make_uri(template, row):
+    """Create URI, handling special cases like article URIs"""
+    # Check if this is an article with a full URI
+    if 'Article_{uri}' in template and 'uri' in row:
+        article_id = extract_article_id(row['uri'])
+        return URIRef(BASE[f"Article_{article_id}"])
     return URIRef(BASE[template.format(**row)])
 
 def make_label(uri_str):
@@ -80,12 +95,22 @@ for section_name, section in config.items():
             subj_label = get_entity_label(section["type"], row, section["subject"])
             g.add((subj, RDFS.label, Literal(subj_label)))
             
+            # Special handling for articles: add original URI as property
+            if section["type"] == "Article" and "uri" in row:
+                g.add((subj, ONT["uri"], Literal(row["uri"])))
+            
             cypher_lines.append(
                 f"MERGE (n:{section['type']} {{id:'{subj.split('/')[-1]}'}})"
             )
             cypher_lines.append(
                 f"SET n.label='{subj_label}'"
             )
+            
+            # Add URI to cypher for articles
+            if section["type"] == "Article" and "uri" in row:
+                cypher_lines.append(
+                    f"SET n.uri='{row['uri']}'"
+                )
 
         # datatype properties
         for prop, col in section.get("datatype_props", {}).items():

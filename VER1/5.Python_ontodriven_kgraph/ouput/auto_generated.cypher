@@ -316,7 +316,7 @@ SET n.label='Therapy P006 nan'
 MERGE (o:Drug {id:'Drug_nan'})
 SET o.label='Drug nan'
 MERGE (n)-[:USESDRUG]->(o)
-MERGE (n:Article {id:''})
+MERGE (n:Article {id:'Article_PMC9392234'})
 SET n.label=''
 SET n.uri='https://pmc.ncbi.nlm.nih.gov/articles/PMC9392234/'
 SET n.title='Triple primary lung cancer: a case report'
@@ -325,14 +325,14 @@ SET n.publicationDate='2022-08-19'
 MERGE (o:LungCancer {id:'LungCancer'})
 SET o.label='LungCancer'
 MERGE (n)-[:ABOUT]->(o)
-MERGE (e:Histology {id:'Histology_Small_Cell_Lung_Cancer'})
-SET e.label='Histology Small_Cell_Lung_Cancer'
-MERGE (n)-[:REFERS_TO]->(e)
 MERGE (e:Histology {id:'Histology_Squamous_Cell_Carcinoma'})
 SET e.label='Histology Squamous_Cell_Carcinoma'
 MERGE (n)-[:REFERS_TO]->(e)
 MERGE (e:Histology {id:'Histology_Adenocarcinoma'})
 SET e.label='Histology Adenocarcinoma'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Histology {id:'Histology_Small_Cell_Lung_Cancer'})
+SET e.label='Histology Small_Cell_Lung_Cancer'
 MERGE (n)-[:REFERS_TO]->(e)
 MERGE (e:Therapy {id:'Therapy_Surgery'})
 SET e.label='Therapy Surgery'
@@ -343,7 +343,7 @@ MERGE (n)-[:REFERS_TO]->(e)
 MERGE (e:Therapy {id:'Therapy_Chemoradiation'})
 SET e.label='Therapy Chemoradiation'
 MERGE (n)-[:REFERS_TO]->(e)
-MERGE (n:Article {id:''})
+MERGE (n:Article {id:'Article_PMC8854358'})
 SET n.label=''
 SET n.uri='https://pmc.ncbi.nlm.nih.gov/articles/PMC8854358/'
 SET n.title='Case Report: Combined Small Cell Lung Carcinoma with Adenocarcinoma'
@@ -361,7 +361,7 @@ MERGE (n)-[:REFERS_TO]->(e)
 MERGE (e:Therapy {id:'Therapy_Surgery'})
 SET e.label='Therapy Surgery'
 MERGE (n)-[:REFERS_TO]->(e)
-MERGE (n:Article {id:''})
+MERGE (n:Article {id:'Article_PMC7919120'})
 SET n.label=''
 SET n.uri='https://pmc.ncbi.nlm.nih.gov/articles/PMC7919120/'
 SET n.title='Synchronous triple primary lung cancer with three different histological subtypes'
@@ -370,23 +370,23 @@ SET n.publicationDate='2024-12-13'
 MERGE (o:LungCancer {id:'LungCancer'})
 SET o.label='LungCancer'
 MERGE (n)-[:ABOUT]->(o)
-MERGE (e:Histology {id:'Histology_Small_Cell_Lung_Cancer'})
-SET e.label='Histology Small_Cell_Lung_Cancer'
-MERGE (n)-[:REFERS_TO]->(e)
 MERGE (e:Histology {id:'Histology_Squamous_Cell_Carcinoma'})
 SET e.label='Histology Squamous_Cell_Carcinoma'
 MERGE (n)-[:REFERS_TO]->(e)
 MERGE (e:Histology {id:'Histology_Adenocarcinoma'})
 SET e.label='Histology Adenocarcinoma'
 MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Histology {id:'Histology_Small_Cell_Lung_Cancer'})
+SET e.label='Histology Small_Cell_Lung_Cancer'
+MERGE (n)-[:REFERS_TO]->(e)
 MERGE (e:Therapy {id:'Therapy_Chemotherapy'})
 SET e.label='Therapy Chemotherapy'
 MERGE (n)-[:REFERS_TO]->(e)
-MERGE (e:Therapy {id:'Therapy_Thoracoscopic'})
-SET e.label='Therapy Thoracoscopic'
-MERGE (n)-[:REFERS_TO]->(e)
 MERGE (e:Therapy {id:'Therapy_Surgery'})
 SET e.label='Therapy Surgery'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Therapy {id:'Therapy_Thoracoscopic'})
+SET e.label='Therapy Thoracoscopic'
 MERGE (n)-[:REFERS_TO]->(e)
 MERGE (e:Therapy {id:'Therapy_Vats'})
 SET e.label='Therapy Vats'
@@ -394,7 +394,7 @@ MERGE (n)-[:REFERS_TO]->(e)
 MERGE (e:Outcome {id:'Outcome_Recurrence'})
 SET e.label='Outcome Recurrence'
 MERGE (n)-[:REFERS_TO]->(e)
-MERGE (n:Article {id:''})
+MERGE (n:Article {id:'Article_PMC4971274'})
 SET n.label=''
 SET n.uri='https://pmc.ncbi.nlm.nih.gov/articles/PMC4971274/'
 SET n.title='A case of three synchronous primary lung cancers within the same lung lobe'
@@ -418,7 +418,7 @@ MERGE (n)-[:REFERS_TO]->(e)
 MERGE (e:Therapy {id:'Therapy_Lobectomy'})
 SET e.label='Therapy Lobectomy'
 MERGE (n)-[:REFERS_TO]->(e)
-MERGE (n:Article {id:''})
+MERGE (n:Article {id:'Article_PMC9641134'})
 SET n.label=''
 SET n.uri='https://pmc.ncbi.nlm.nih.gov/articles/PMC9641134/'
 SET n.title='Pulmonary combined small cell carcinoma and enteric adenocarcinoma'
@@ -427,14 +427,14 @@ SET n.publicationDate='2023-02-11'
 MERGE (o:LungCancer {id:'LungCancer'})
 SET o.label='LungCancer'
 MERGE (n)-[:ABOUT]->(o)
-MERGE (e:Histology {id:'Histology_Small_Cell_Lung_Cancer'})
-SET e.label='Histology Small_Cell_Lung_Cancer'
-MERGE (n)-[:REFERS_TO]->(e)
 MERGE (e:Histology {id:'Histology_Adenocarcinoma'})
 SET e.label='Histology Adenocarcinoma'
 MERGE (n)-[:REFERS_TO]->(e)
 MERGE (e:Histology {id:'Histology_Sclc'})
 SET e.label='Histology Sclc'
+MERGE (n)-[:REFERS_TO]->(e)
+MERGE (e:Histology {id:'Histology_Small_Cell_Lung_Cancer'})
+SET e.label='Histology Small_Cell_Lung_Cancer'
 MERGE (n)-[:REFERS_TO]->(e)
 MERGE (e:Biomarker {id:'Biomarker_EGFR'})
 SET e.label='Biomarker EGFR'

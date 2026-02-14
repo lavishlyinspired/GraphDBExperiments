@@ -76,7 +76,6 @@
     "subject": "Article_{uri}",
     "type": "Article",
     "datatype_props": {
-      "uri": "uri",
       "title": "title",
       "body": "body",
       "publicationDate": "date"
