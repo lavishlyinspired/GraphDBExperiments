@@ -30,7 +30,7 @@ CancerPatient
 
 MERGE (from:_Category {name:"CancerPatient"})
 MERGE (to:_Category {name:"LungCancer"})
-MERGE (from)<-[:_from]-(r:_Relationship {name:"hasDiagnosis"})-[:_to]->(to);
+MERGE (from)<-[:_from]-(r:_Relationship {name:"diagnosed with"})-[:_to]->(to);
 
 
 Meaning:
