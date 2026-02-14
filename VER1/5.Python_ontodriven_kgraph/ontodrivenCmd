@@ -1,3 +1,6 @@
+
+CALL apoc.periodic.truncate({ dropSchema: true });
+
 // ========================================
 // LUNG CANCER KNOWLEDGE GRAPH - COMPLETE GUIDE
 // ========================================
@@ -60,7 +63,7 @@ CREATE CONSTRAINT n10s_unique_uri FOR (r:Resource)
 // Initialize n10s - CRITICAL: Use "MAP" for relationships!
 CALL n10s.graphconfig.init({
   handleVocabUris: "MAP",           // ✅ NOT "IGNORE"!
-  handleMultival: "ARRAY",
+  handleMultival: "OVERWRITE",
   handleRDFTypes: "LABELS",
   applyNeo4jNaming: true,
   keepLangTag: false,
@@ -81,7 +84,7 @@ CALL n10s.rdf.import.fetch(
 );
 
 // Verify relationships were created (should see actual relationship types, not ObjectProperty nodes)
-MATCH (p:ns0__Patient)-[r]->(t)
+MATCH (p:Patient)-[r]->(t)
 RETURN type(r) AS RelationshipType, count(*) AS Count
 ORDER BY Count DESC LIMIT 10;
 
@@ -170,7 +173,7 @@ LIMIT 50;
 
 // Import SHACL shapes
 CALL n10s.validation.shacl.import.inline(
-  "@prefix lc: <http://example.org/lungCancer#> .
+"@prefix lc: <http://example.org/lungCancer#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix neo4j: <neo4j://graph.schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -362,6 +365,9 @@ RETURN file, nodes, relationships;
 
 //  test******************************
 
+MATCH (n:Resource)
+REMOVE n:Resource;
+
 // Complete patient graph (P001)
 MATCH path = (p:Patient {name: "Patient_P004"})-[*1..3]->(connected)
 RETURN path;
@@ -381,6 +387,22 @@ RETURN last(split(x.name,"#")),
        last(split(y.name,"#")),
        " is a " + last(split(to.name,"#"))
 LIMIT 20;
+
+
+or 
+
+MATCH (r:ObjectProperty)-[:DOMAIN]->(from:Class)
+MATCH (r)-[:RANGE]->(to:Class)
+WITH r, from, to,
+     toUpper(replace(r.label,' ','') ) AS relType
+MATCH (x)-[rel]->(y)
+WHERE type(rel) = relType
+RETURN x.label AS subject,
+       " is a " + from.label AS subjectType,
+       y.label AS object,
+       " is a " + to.label AS objectType
+LIMIT 20;
+
 
 
 

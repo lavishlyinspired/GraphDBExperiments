@@ -1,4 +1,4 @@
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lavishlyinspired/GraphDBExperiments/refs/heads/main/VER1/Lungcancerinfo.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lavishlyinspired/GraphDBExperiments/refs/heads/main/VER1/2.%20gcp_nlp/LungcancerArticle.csv' AS row
 CREATE (a:Article { uri: row.uri})
 SET a.title = row.title, a.body = row.body, a.datetime = datetime(row.date);
 
@@ -24,6 +24,7 @@ ON EACH [a.body];
 :param key => "YOUR_GCP_API_KEY_HERE";
 
 Step 1 — deterministic disease link
+
 MATCH (a:Article),(lc:LungCancer)
 MERGE (a)-[:ABOUT]->(lc);
 
@@ -84,7 +85,7 @@ FOREACH (_ IN CASE WHEN c IS NOT NULL THEN [1] ELSE [] END |
 
 );
 
-
+step 3
 
 Link Articles → Ontology concepts (simple keyword approach) If you want deterministic linking without NLP:
 
@@ -98,11 +99,12 @@ MERGE (a)-[:REFERS_TO]->(c);
 #Full Path Semantic Exploration (Bloom style)
 MATCH path =
 (p:Patient {name:"John"})
--[:hasDiagnosis|hasSymptom|receivesTreatment*1..2]-()
+-[:HASDIAGNOSIS|HASSYMPTOM|RECEIVESTREATMENT*1..2]-()
 <-[:ABOUT|REFERS_TO*1..2]-(a:Article)
 RETURN path;
 
-#Similar Articles Based on Same CancerType
+#Similar Articles Based on Same CancerType - NA
+
 MATCH (a:Article)-[:ABOUT]->(lc:LungCancer)
 -[:hasType]->(ct:CancerType)
 <-[:hasType]-(otherLc:LungCancer)
@@ -121,11 +123,11 @@ RETURN DISTINCT other.title;
 
 #Articles about Stage III NSCLC
 MATCH (ct:CancerType {name:"NSCLC"})
-<-[:hasType]-(lc:LungCancer)
--[:hasStage]->(s:Stage {name:"StageIII"})
-<-[:hasStage]-(lc)
-<-[:ABOUT]-(a:Article)
+<-[:HASTYPE]-(lc:LungCancer)
+-[:HASSTAGE]->(:Stage {name:"StageIII"})
+MATCH (a:Article)-[:ABOUT]->(lc)
 RETURN DISTINCT a.title;
+
 
 
 #Articles about patients treated with Chemo  
@@ -149,7 +151,7 @@ RETURN a.title, [x IN nodes(path) | coalesce(x.name,"")];
 
 MATCH (a:Article)
 WHERE EXISTS {
-  MATCH (a)-[:ABOUT]->(:LungCancer)-[:hasType]->(:CancerType {name:"NSCLC"})
+  MATCH (a)-[:ABOUT]->(:LungCancer)-[:hasType]->(:CancerT ype {name:"NSCLC"})
 }
 AND EXISTS {
   MATCH (a)-[:ABOUT]->(:LungCancer)-[:hasStage]->(:Stage {name:"StageIII"})

@@ -55,6 +55,11 @@ WHERE type(rel) = r.name
 RETURN x, " is a " + from.name, y, " is a " + to.name;
 
 
+MATCH (from:_Category)<-[:_from]-(r:_Relationship)-[:_to]->(to:_Category)
+MATCH (x)-[rel]->(y)
+WHERE type(rel) = r.name
+RETURN x.name, " is a " + from.name, y.name, " is a " + to.name;
+
 You should see results like:
 
 John is a CancerPatient
