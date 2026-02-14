@@ -6,6 +6,7 @@
 res:Patient_P001 a ont:Patient ;
     rdfs:label "Patient P001" ;
     ont:age 67 ;
+    ont:diagnosedWith ont:LungCancer ;
     ont:hasHistology res:Histology_Adenocarcinoma ;
     ont:hasOutcome res:Outcome_P001_Partial_Response ;
     ont:hasStage res:Stage_IV ;
@@ -14,11 +15,13 @@ res:Patient_P001 a ont:Patient ;
     ont:receivedTherapy res:Therapy_P001_Osimertinib ;
     ont:sex "M" ;
     ont:smokingPackYears 45 ;
-    ont:testedForBiomarker res:Biomarker_EGFR .
+    ont:testedForBiomarker res:Biomarker_EGFR ;
+    ont:underwentTest res:GenomicTest_P001 .
 
 res:Patient_P002 a ont:Patient ;
     rdfs:label "Patient P002" ;
     ont:age 58 ;
+    ont:diagnosedWith ont:LungCancer ;
     ont:hasHistology res:Histology_Squamous ;
     ont:hasOutcome res:Outcome_P002_Stable ;
     ont:hasStage res:Stage_III ;
@@ -27,11 +30,13 @@ res:Patient_P002 a ont:Patient ;
     ont:receivedTherapy res:Therapy_P002_Cisplatin ;
     ont:sex "F" ;
     ont:smokingPackYears 20 ;
-    ont:testedForBiomarker res:Biomarker_KRAS .
+    ont:testedForBiomarker res:Biomarker_KRAS ;
+    ont:underwentTest res:GenomicTest_P002 .
 
 res:Patient_P003 a ont:Patient ;
     rdfs:label "Patient P003" ;
     ont:age 72 ;
+    ont:diagnosedWith ont:LungCancer ;
     ont:hasHistology res:Histology_Adenocarcinoma ;
     ont:hasOutcome res:Outcome_P003_Complete_Response ;
     ont:hasStage res:Stage_IV ;
@@ -40,11 +45,13 @@ res:Patient_P003 a ont:Patient ;
     ont:receivedTherapy res:Therapy_P003_Alectinib ;
     ont:sex "M" ;
     ont:smokingPackYears 60 ;
-    ont:testedForBiomarker res:Biomarker_ALK .
+    ont:testedForBiomarker res:Biomarker_ALK ;
+    ont:underwentTest res:GenomicTest_P003 .
 
 res:Patient_P004 a ont:Patient ;
     rdfs:label "Patient P004" ;
     ont:age 49 ;
+    ont:diagnosedWith ont:LungCancer ;
     ont:hasHistology res:Histology_Adenocarcinoma ;
     ont:hasOutcome res:Outcome_P004_Partial_Response ;
     ont:hasStage res:Stage_II ;
@@ -53,11 +60,13 @@ res:Patient_P004 a ont:Patient ;
     ont:receivedTherapy res:Therapy_P004_Erlotinib ;
     ont:sex "F" ;
     ont:smokingPackYears 5 ;
-    ont:testedForBiomarker res:Biomarker_EGFR .
+    ont:testedForBiomarker res:Biomarker_EGFR ;
+    ont:underwentTest res:GenomicTest_P004 .
 
 res:Patient_P005 a ont:Patient ;
     rdfs:label "Patient P005" ;
     ont:age 63 ;
+    ont:diagnosedWith ont:LungCancer ;
     ont:hasHistology res:Histology_Squamous ;
     ont:hasOutcome res:Outcome_P005_Partial_Response ;
     ont:hasStage res:Stage_III ;
@@ -66,11 +75,13 @@ res:Patient_P005 a ont:Patient ;
     ont:receivedTherapy res:Therapy_P005_Pembrolizumab ;
     ont:sex "M" ;
     ont:smokingPackYears 40 ;
-    ont:testedForBiomarker res:Biomarker_PD-L1 .
+    ont:testedForBiomarker res:Biomarker_PD-L1 ;
+    ont:underwentTest res:GenomicTest_P005 .
 
 res:Patient_P006 a ont:Patient ;
     rdfs:label "Patient P006" ;
     ont:age 55 ;
+    ont:diagnosedWith ont:LungCancer ;
     ont:hasHistology res:Histology_Adenocarcinoma ;
     ont:hasOutcome res:Outcome_P006_Disease_Free ;
     ont:hasStage res:Stage_I ;
@@ -79,19 +90,28 @@ res:Patient_P006 a ont:Patient ;
     ont:receivedTherapy res:Therapy_P006_nan ;
     ont:sex "F" ;
     ont:smokingPackYears 10 ;
-    ont:testedForBiomarker res:Biomarker_BRAF .
+    ont:testedForBiomarker res:Biomarker_BRAF ;
+    ont:underwentTest res:GenomicTest_P006 .
 
 res:Biomarker_ALK a ont:Biomarker ;
-    rdfs:label "Biomarker ALK" .
+    rdfs:label "Biomarker ALK" ;
+    ont:hasGene res:Gene_ALK ;
+    ont:hasMutation res:Mutation_EML4-ALK .
 
 res:Biomarker_BRAF a ont:Biomarker ;
-    rdfs:label "Biomarker BRAF" .
+    rdfs:label "Biomarker BRAF" ;
+    ont:hasGene res:Gene_BRAF ;
+    ont:hasMutation res:Mutation_V600E .
 
 res:Biomarker_KRAS a ont:Biomarker ;
-    rdfs:label "Biomarker KRAS" .
+    rdfs:label "Biomarker KRAS" ;
+    ont:hasGene res:Gene_KRAS ;
+    ont:hasMutation res:Mutation_G12C .
 
 res:Biomarker_PD-L1 a ont:Biomarker ;
-    rdfs:label "Biomarker PD-L1" .
+    rdfs:label "Biomarker PD-L1" ;
+    ont:hasGene res:Gene_PD-L1 ;
+    ont:hasMutation res:Mutation_High .
 
 res:Drug_Alectinib a ont:Drug ;
     rdfs:label "Drug Alectinib" .
@@ -111,6 +131,57 @@ res:Drug_Pembrolizumab a ont:Drug ;
 res:Drug_nan a ont:Drug ;
     rdfs:label "Drug nan" .
 
+res:Gene_ALK a ont:Gene ;
+    rdfs:label "Gene ALK" .
+
+res:Gene_BRAF a ont:Gene ;
+    rdfs:label "Gene BRAF" .
+
+res:Gene_EGFR a ont:Gene ;
+    rdfs:label "Gene EGFR" .
+
+res:Gene_KRAS a ont:Gene ;
+    rdfs:label "Gene KRAS" .
+
+res:Gene_PD-L1 a ont:Gene ;
+    rdfs:label "Gene PD-L1" .
+
+res:GenomicTest_P001 a ont:GenomicTest ;
+    rdfs:label "GenomicTest P001" .
+
+res:GenomicTest_P002 a ont:GenomicTest ;
+    rdfs:label "GenomicTest P002" .
+
+res:GenomicTest_P003 a ont:GenomicTest ;
+    rdfs:label "GenomicTest P003" .
+
+res:GenomicTest_P004 a ont:GenomicTest ;
+    rdfs:label "GenomicTest P004" .
+
+res:GenomicTest_P005 a ont:GenomicTest ;
+    rdfs:label "GenomicTest P005" .
+
+res:GenomicTest_P006 a ont:GenomicTest ;
+    rdfs:label "GenomicTest P006" .
+
+res:Mutation_EML4-ALK a ont:Mutation ;
+    rdfs:label "Mutation EML4-ALK" .
+
+res:Mutation_Ex19del a ont:Mutation ;
+    rdfs:label "Mutation Ex19del" .
+
+res:Mutation_G12C a ont:Mutation ;
+    rdfs:label "Mutation G12C" .
+
+res:Mutation_High a ont:Mutation ;
+    rdfs:label "Mutation High" .
+
+res:Mutation_L858R a ont:Mutation ;
+    rdfs:label "Mutation L858R" .
+
+res:Mutation_V600E a ont:Mutation ;
+    rdfs:label "Mutation V600E" .
+
 res:Outcome_P001_Partial_Response a ont:Outcome ;
     rdfs:label "Outcome P001 Partial Response" .
 
@@ -128,12 +199,6 @@ res:Outcome_P005_Partial_Response a ont:Outcome ;
 
 res:Outcome_P006_Disease_Free a ont:Outcome ;
     rdfs:label "Outcome P006 Disease Free" .
-
-res:Stage_I a ont:Stage ;
-    rdfs:label "Stage I" .
-
-res:Stage_II a ont:Stage ;
-    rdfs:label "Stage II" .
 
 res:Therapy_P001_Osimertinib a ont:Therapy ;
     rdfs:label "Therapy P001 Osimertinib" ;
@@ -160,25 +225,46 @@ res:Therapy_P006_nan a ont:Therapy ;
     ont:usesDrug res:Drug_nan .
 
 res:Tumor_P001 a ont:Tumor ;
-    rdfs:label "Tumor P001" .
+    rdfs:label "Tumor P001" ;
+    ont:hasHistology res:Histology_Adenocarcinoma ;
+    ont:hasStage res:Stage_IV .
 
 res:Tumor_P002 a ont:Tumor ;
-    rdfs:label "Tumor P002" .
+    rdfs:label "Tumor P002" ;
+    ont:hasHistology res:Histology_Squamous ;
+    ont:hasStage res:Stage_III .
 
 res:Tumor_P003 a ont:Tumor ;
-    rdfs:label "Tumor P003" .
+    rdfs:label "Tumor P003" ;
+    ont:hasHistology res:Histology_Adenocarcinoma ;
+    ont:hasStage res:Stage_IV .
 
 res:Tumor_P004 a ont:Tumor ;
-    rdfs:label "Tumor P004" .
+    rdfs:label "Tumor P004" ;
+    ont:hasHistology res:Histology_Adenocarcinoma ;
+    ont:hasStage res:Stage_II .
 
 res:Tumor_P005 a ont:Tumor ;
-    rdfs:label "Tumor P005" .
+    rdfs:label "Tumor P005" ;
+    ont:hasHistology res:Histology_Squamous ;
+    ont:hasStage res:Stage_III .
 
 res:Tumor_P006 a ont:Tumor ;
-    rdfs:label "Tumor P006" .
+    rdfs:label "Tumor P006" ;
+    ont:hasHistology res:Histology_Adenocarcinoma ;
+    ont:hasStage res:Stage_I .
 
 res:Biomarker_EGFR a ont:Biomarker ;
-    rdfs:label "Biomarker EGFR" .
+    rdfs:label "Biomarker EGFR" ;
+    ont:hasGene res:Gene_EGFR ;
+    ont:hasMutation res:Mutation_Ex19del,
+        res:Mutation_L858R .
+
+res:Stage_I a ont:Stage ;
+    rdfs:label "Stage I" .
+
+res:Stage_II a ont:Stage ;
+    rdfs:label "Stage II" .
 
 res:Histology_Squamous a ont:Histology ;
     rdfs:label "Histology Squamous" .
@@ -188,6 +274,9 @@ res:Stage_III a ont:Stage ;
 
 res:Stage_IV a ont:Stage ;
     rdfs:label "Stage IV" .
+
+ont:LungCancer a ont:LungCancer ;
+    rdfs:label "LungCancer" .
 
 res:Histology_Adenocarcinoma a ont:Histology ;
     rdfs:label "Histology Adenocarcinoma" .

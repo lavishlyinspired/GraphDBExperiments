@@ -135,8 +135,21 @@ Config               Schema        Shapes   (n10s)
 ### 1. Ontology Schema (`lung_cancer_kg_schema.ttl`)
 
 Defines:
-- **Classes**: Patient, Tumor, Stage, Histology, Biomarker, Therapy, Drug, Outcome
-- **Object Properties**: hasTumor, hasStage, receivedTherapy, usesDrug, testedForBiomarker
+- **Classes**: Patient, Tumor, Stage, Histology, Biomarker, Therapy, Drug, Outcome, Gene, Mutation, Test
+- **13 Object Properties**: 
+  1. diagnosedWith (Patient → Disease)
+  2. hasTumor (Patient → Tumor)
+  3. hasStage (Tumor/Patient → Stage)
+  4. hasHistology (Tumor/Patient → Histology)
+  5. underwentTest (Patient → Test)
+  6. testedForBiomarker (Patient → Biomarker)
+  7. hasGene (Biomarker → Gene)
+  8. hasMutation (Biomarker → Mutation)
+  9. receivedTherapy (Patient → Therapy)
+  10. usesDrug (Therapy → Drug)
+  11. hasOutcome (Patient → Outcome)
+  12. recommends (Guideline → Therapy)
+  13. triggers (ClinicalRule → Therapy)
 - **Datatype Properties**: age, sex, smokingPackYears, patientId
 - **rdfs:label** on all classes and properties for human readability
 

@@ -88,11 +88,18 @@ for section in config.values():
 
         # object links
         for prop, tmpl in section.get("object_links", {}).items():
-            obj = make_uri(tmpl, row)
-            g.add((subj, ONT[prop], obj))
+            # Check if template has variables (contains {})
+            if "{" in tmpl:
+                # Template with variables: "Drug_{drug}"
+                obj = make_uri(tmpl, row)
+                # Extract object type from template (e.g., "Drug" from "Drug_{drug}")
+                obj_type = tmpl.split("_")[0]
+            else:
+                # Fixed class reference: "LungCancer"
+                obj = ONT[tmpl]  # Create URI in ontology namespace
+                obj_type = tmpl
             
-            # Extract object type from template (e.g., "Drug" from "Drug_{drug}")
-            obj_type = tmpl.split("_")[0]
+            g.add((subj, ONT[prop], obj))
             
             # Add rdf:type for the linked object (CRITICAL for Neo4j!)
             g.add((obj, RDF.type, ONT[obj_type]))
@@ -101,8 +108,11 @@ for section in config.values():
             obj_label = make_label(str(obj))
             g.add((obj, RDFS.label, Literal(obj_label)))
 
+            # Get URI fragment for Cypher ID
+            obj_id = str(obj).split('/')[-1].split('#')[-1]
+            
             cypher_lines.append(
-                f"MERGE (o:{obj_type} {{id:'{obj.split('/')[-1]}'}})"
+                f"MERGE (o:{obj_type} {{id:'{obj_id}'}})"
             )
             cypher_lines.append(
                 f"SET o.label='{obj_label}'"

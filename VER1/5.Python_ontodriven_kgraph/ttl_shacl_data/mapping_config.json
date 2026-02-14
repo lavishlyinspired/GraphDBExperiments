@@ -10,7 +10,18 @@
       "smokingPackYears": "smoking_pack_years"
     },
     "object_links": {
+      "diagnosedWith": "LungCancer",
       "hasTumor": "Tumor_{patient_id}",
+      "hasStage": "Stage_{stage}",
+      "hasHistology": "Histology_{histology}"
+    }
+  },
+
+  "tumors": {
+    "file": "ttl_shacl_data/lung_patients.csv",
+    "subject": "Tumor_{patient_id}",
+    "type": "Tumor",
+    "object_links": {
       "hasStage": "Stage_{stage}",
       "hasHistology": "Histology_{histology}"
     }
@@ -20,7 +31,25 @@
     "file": "ttl_shacl_data/lung_mutations.csv",
     "subject": "Patient_{patient_id}",
     "object_links": {
-      "testedForBiomarker": "Biomarker_{gene}"
+      "testedForBiomarker": "Biomarker_{gene}",
+      "underwentTest": "GenomicTest_{patient_id}"
+    }
+  },
+
+  "genomic_tests": {
+    "file": "ttl_shacl_data/lung_mutations.csv",
+    "subject": "GenomicTest_{patient_id}",
+    "type": "GenomicTest",
+    "object_links": {}
+  },
+
+  "biomarkers": {
+    "file": "ttl_shacl_data/lung_mutations.csv",
+    "subject": "Biomarker_{gene}",
+    "type": "Biomarker",
+    "object_links": {
+      "hasGene": "Gene_{gene}",
+      "hasMutation": "Mutation_{mutation}"
     }
   },
 
