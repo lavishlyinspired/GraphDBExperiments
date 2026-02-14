@@ -1,4 +1,4 @@
-@prefix : <http://lungkg.org/ontology#> .
+@prefix : <neo4j://graph.schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -240,7 +240,7 @@
         sh:message "Patient who received therapy should have an outcome recorded" ;
         sh:severity sh:Warning ;
         sh:select """
-            PREFIX : <http://lungkg.org/ontology#>
+            PREFIX : <neo4j://graph.schema#>
             SELECT $this
             WHERE {
                 $this :receivedTherapy ?therapy .
@@ -258,7 +258,7 @@
         sh:message "Stage IV patients should have biomarker testing for treatment planning" ;
         sh:severity sh:Info ;
         sh:select """
-            PREFIX : <http://lungkg.org/ontology#>
+            PREFIX : <neo4j://graph.schema#>
             SELECT $this
             WHERE {
                 $this :hasStage ?stage .

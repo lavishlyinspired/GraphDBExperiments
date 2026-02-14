@@ -58,7 +58,7 @@ FOREACH (_ IN CASE WHEN p IS NOT NULL THEN [1] ELSE [] END |
   MERGE (node)-[:ABOUT]->(p)
 )
 
-WITH node, entity   // ⭐ REQUIRED
+WITH node, entity   // REQUIRED
 
 // ---------- DISEASE ----------
 OPTIONAL MATCH (d:LungCancer)
@@ -68,7 +68,7 @@ FOREACH (_ IN CASE WHEN d IS NOT NULL THEN [1] ELSE [] END |
   MERGE (node)-[:ABOUT]->(d)
 )
 
-WITH node, entity   // ⭐ REQUIRED
+WITH node, entity   // REQUIRED
 
 // ---------- CONCEPTS ----------
 OPTIONAL MATCH (c)

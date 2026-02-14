@@ -339,6 +339,8 @@ CALL apoc.create.addLabels(x,[from.name]) YIELD node AS xs
 CALL apoc.create.addLabels(y,[to.name]) YIELD node AS ys
 RETURN count(xs) + count(ys) AS nodesUpdated;
 
+
+
 // ========================================
 // Export Graph
 // ========================================
@@ -357,6 +359,28 @@ CALL apoc.export.json.data(
 )
 YIELD file, nodes, relationships
 RETURN file, nodes, relationships;
+
+//  test******************************
+
+// Complete patient graph (P001)
+MATCH path = (p:Patient {name: "Patient_P004"})-[*1..3]->(connected)
+RETURN path;
+
+
+
+final magic query to add category labels based on relationships. This allows for easier querying and visualization by category (e.g., CancerPatient, Gene, Drug).
+
+MATCH (r:ObjectProperty)-[:DOMAIN]->(from:Class)
+MATCH (r)-[:RANGE]->(to:Class)
+WITH r, from, to,
+     toUpper(last(split(r.uri,"#"))) AS relType
+MATCH (x)-[rel]->(y)
+WHERE type(rel) = relType
+RETURN last(split(x.name,"#")),
+       " is a " + last(split(from.name,"#")),
+       last(split(y.name,"#")),
+       " is a " + last(split(to.name,"#"))
+LIMIT 20;
 
 
 
@@ -408,13 +432,13 @@ MATCH (n:ObjectProperty) RETURN n.name LIMIT 10;
 // 3. Verify relationships with query below
 
 // VERIFY: Should see actual relationship types
-MATCH (p:ns0__Patient)-[r]->(t)
+MATCH (p:Patient)-[r]->(t)
 RETURN type(r) AS RelationshipType, labels(t) AS TargetType, count(*) AS Count
 ORDER BY Count DESC LIMIT 15;
 
 // Should see results like:
-// ns0__receivedTherapy, [ns0__Therapy], 45
-// ns0__testedForBiomarker, [ns0__Biomarker], 38
+// receivedTherapy, [Therapy], 45
+// testedForBiomarker, [Biomarker], 38
 // NOT: ObjectProperty nodes
 
 
@@ -423,23 +447,23 @@ ORDER BY Count DESC LIMIT 15;
 // ========================================
 
 // Find all patients with treatments and drugs
-MATCH (p:ns0__Patient)-[:ns0__receivedTherapy]->(t:ns0__Therapy)-[:ns0__usesDrug]->(d:ns0__Drug)
-RETURN p.ns0__patientId AS Patient, 
-       p.rdfs__label AS PatientLabel,
-       d.rdfs__label AS Drug
+MATCH (p:Patient)-[:RECEIVEDTHERAPY]->(t:Therapy)-[:USESDRUG]->(d:Drug)
+RETURN p.patientId AS Patient, 
+       p.label AS PatientLabel,
+       d.label AS Drug
 LIMIT 10;
 
 // Find patients by biomarker
-MATCH (p:ns0__Patient)-[:ns0__testedForBiomarker]->(b:ns0__Biomarker)
-RETURN p.ns0__patientId AS Patient,
-       b.rdfs__label AS Biomarker,
+MATCH (p:Patient)-[:TESTEDFORBIOMARKER]->(b:Biomarker)
+RETURN p.patientId AS Patient,
+       b.label AS Biomarker,
        count(p) AS Count;
 
 // Check patient stage relationships
-MATCH (p:ns0__Patient)-[:ns0__hasStage]->(s:ns0__Stage)
-RETURN s.rdfs__label AS Stage,
+MATCH (p:Patient)-[:HASSTAGE]->(s:Stage)
+RETURN s.label AS Stage,
        count(p) AS PatientCount;
 
 // Complete patient graph (P001)
-MATCH path = (p:ns0__Patient {ns0__patientId: "P001"})-[*1..3]->(connected)
+MATCH path = (p:Patient {name: "Patient_P004"})-[*1..3]->(connected)
 RETURN path;
