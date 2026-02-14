@@ -10,12 +10,10 @@ ONT  = Namespace("http://lungkg.org/ontology#")
 # Get the directory where this script is located
 SCRIPT_DIR = Path(__file__).parent
 
-ONTOLOGY = SCRIPT_DIR / "ttl_shacl_data" / "lung_cancer_kg_schema.ttl"
 MAPPING  = SCRIPT_DIR / "ttl_shacl_data" / "mapping_config.json"
 
+# Create a new graph for instances only (don't parse schema)
 g = Graph()
-g.parse(ONTOLOGY)
-
 g.bind("ont", ONT)
 g.bind("res", BASE)
 

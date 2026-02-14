@@ -1,0 +1,269 @@
+@prefix : <http://lungkg.org/ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+#################################################
+# Patient SHACL Constraints
+#################################################
+
+:PatientShape a sh:NodeShape ;
+    rdfs:label "Patient Shape" ;
+    rdfs:comment "Validation rules for Patient nodes" ;
+    sh:targetClass :Patient ;
+    
+    # Patient must have an ID
+    sh:property [
+        sh:path :patientId ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "Patient must have exactly one patientId" ;
+    ] ;
+    
+    # Patient must have age
+    sh:property [
+        sh:path :age ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 120 ;
+        sh:severity sh:Violation ;
+        sh:message "Patient must have valid age between 0 and 120" ;
+    ] ;
+    
+    # Patient must have sex
+    sh:property [
+        sh:path :sex ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in ("M" "F" "Other") ;
+        sh:severity sh:Violation ;
+        sh:message "Patient must have sex (M/F/Other)" ;
+    ] ;
+    
+    # Patient should have smoking data
+    sh:property [
+        sh:path :smokingPackYears ;
+        sh:datatype xsd:float ;
+        sh:minInclusive 0.0 ;
+        sh:severity sh:Warning ;
+        sh:message "Smoking pack years should be non-negative" ;
+    ] ;
+    
+    # Patient must have tumor
+    sh:property [
+        sh:path :hasTumor ;
+        sh:class :Tumor ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "Patient must have at least one tumor" ;
+    ] ;
+    
+    # Patient must have stage
+    sh:property [
+        sh:path :hasStage ;
+        sh:class :Stage ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "Patient must have a cancer stage" ;
+    ] ;
+    
+    # Patient must have histology
+    sh:property [
+        sh:path :hasHistology ;
+        sh:class :Histology ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "Patient must have histology classification" ;
+    ] ;
+    
+    # Patient should have rdfs:label
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:severity sh:Info ;
+        sh:message "Patient should have a label for display" ;
+    ] .
+
+#################################################
+# Tumor SHACL Constraints
+#################################################
+
+:TumorShape a sh:NodeShape ;
+    rdfs:label "Tumor Shape" ;
+    sh:targetClass :Tumor ;
+    
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:severity sh:Info ;
+    ] .
+
+#################################################
+# Stage SHACL Constraints
+#################################################
+
+:StageShape a sh:NodeShape ;
+    rdfs:label "Stage Shape" ;
+    sh:targetClass :Stage ;
+    
+    # Stage must have a name
+    sh:property [
+        sh:path :name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:in ("I" "II" "III" "IV" "IA" "IB" "IIA" "IIB" "IIIA" "IIIB" "IIIC" "IVA" "IVB") ;
+        sh:severity sh:Violation ;
+        sh:message "Stage must have a valid cancer stage classification" ;
+    ] ;
+    
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:severity sh:Info ;
+    ] .
+
+#################################################
+# Biomarker SHACL Constraints
+#################################################
+
+:BiomarkerShape a sh:NodeShape ;
+    rdfs:label "Biomarker Shape" ;
+    sh:targetClass :Biomarker ;
+    
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "Biomarker should have a label" ;
+    ] .
+
+#################################################
+# Therapy SHACL Constraints
+#################################################
+
+:TherapyShape a sh:NodeShape ;
+    rdfs:label "Therapy Shape" ;
+    sh:targetClass :Therapy ;
+    
+    # Therapy must use at least one drug
+    sh:property [
+        sh:path :usesDrug ;
+        sh:class :Drug ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "Therapy must use at least one drug" ;
+    ] ;
+    
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:severity sh:Info ;
+    ] .
+
+#################################################
+# Drug SHACL Constraints
+#################################################
+
+:DrugShape a sh:NodeShape ;
+    rdfs:label "Drug Shape" ;
+    sh:targetClass :Drug ;
+    
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "Drug should have a label" ;
+    ] .
+
+#################################################
+# Outcome SHACL Constraints
+#################################################
+
+:OutcomeShape a sh:NodeShape ;
+    rdfs:label "Outcome Shape" ;
+    sh:targetClass :Outcome ;
+    
+    # Outcome should have response type
+    sh:property [
+        sh:path :responseType ;
+        sh:datatype xsd:string ;
+        sh:severity sh:Warning ;
+        sh:message "Outcome should have a response type" ;
+    ] ;
+    
+    # Survival months should be non-negative
+    sh:property [
+        sh:path :survivalMonths ;
+        sh:datatype xsd:float ;
+        sh:minInclusive 0.0 ;
+        sh:severity sh:Warning ;
+        sh:message "Survival months must be non-negative" ;
+    ] ;
+    
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:severity sh:Info ;
+    ] .
+
+#################################################
+# Histology SHACL Constraints
+#################################################
+
+:HistologyShape a sh:NodeShape ;
+    rdfs:label "Histology Shape" ;
+    sh:targetClass :Histology ;
+    
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "Histology should have a label" ;
+    ] .
+
+#################################################
+# Relationship Constraints
+#################################################
+
+:PatientTherapyConstraint a sh:NodeShape ;
+    rdfs:label "Patient-Therapy Relationship Constraint" ;
+    sh:targetClass :Patient ;
+    
+    # If patient received therapy, they should have an outcome
+    sh:sparql [
+        sh:message "Patient who received therapy should have an outcome recorded" ;
+        sh:severity sh:Warning ;
+        sh:select """
+            PREFIX : <http://lungkg.org/ontology#>
+            SELECT $this
+            WHERE {
+                $this :receivedTherapy ?therapy .
+                FILTER NOT EXISTS { $this :hasOutcome ?outcome }
+            }
+        """ ;
+    ] .
+
+:PatientBiomarkerConstraint a sh:NodeShape ;
+    rdfs:label "Patient-Biomarker Relationship Constraint" ;
+    sh:targetClass :Patient ;
+    
+    # Patients with stage IV should have biomarker testing
+    sh:sparql [
+        sh:message "Stage IV patients should have biomarker testing for treatment planning" ;
+        sh:severity sh:Info ;
+        sh:select """
+            PREFIX : <http://lungkg.org/ontology#>
+            SELECT $this
+            WHERE {
+                $this :hasStage ?stage .
+                ?stage :name "IV" .
+                FILTER NOT EXISTS { $this :testedForBiomarker ?biomarker }
+            }
+        """ ;
+    ] .

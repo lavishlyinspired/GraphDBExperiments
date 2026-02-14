@@ -1,16 +1,54 @@
 // ========================================
-// LUNG CANCER KNOWLEDGE GRAPH SETUP
+// LUNG CANCER KNOWLEDGE GRAPH - COMPLETE GUIDE
 // ========================================
 
-// 1. Install Python dependencies
+// ========================================
+// STEP 1: INSTALL DEPENDENCIES
+// ========================================
+
 pip install rdflib pandas pyshacl
 
-// 2. Generate instance data
+
+// ========================================
+// STEP 2: GENERATE RDF DATA
+// ========================================
+
 python lung_cancer_etl_engine.py
+
+// Output files:
+// - ouput/lung_cancer_instances_out.ttl
+// - ouput/auto_generated.cypher
 
 
 // ========================================
-// 3. NEO4J IMPORT (Run in Neo4j Browser)
+// STEP 3: VALIDATE DATA WITH SHACL (PYTHON)
+// ========================================
+
+python validate_shacl.py
+
+// This validates:
+// - Data completeness and quality
+// - Constraint compliance
+// - Relationship integrity
+// Output: ouput/shacl_validation_report.txt
+
+
+// ========================================
+// STEP 4: RUN SPARQL QUERIES (PYTHON)
+// ========================================
+
+python run_sparql_queries.py
+
+// Executes sample SPARQL queries:
+// - List patients
+// - Filter by stage
+// - Treatment outcomes
+// - Biomarker analysis
+// See: SPARQL_CYPHER_QUERIES.md
+
+
+// ========================================
+// STEP 5: NEO4J IMPORT (Run in Neo4j Browser)
 // ========================================
 
 // Clear existing data
@@ -29,16 +67,23 @@ CALL n10s.graphconfig.init({
   keepCustomDataTypes: false
 });
 
-// Import from local files
+// Import SCHEMA first (for class hierarchy & property definitions)
 CALL n10s.rdf.import.fetch(
   "file:///H:/akash/git/CoherencePLM/version26/experiments/GraphDBExperiments/VER1/5.Python_ontodriven_kgraph/ttl_shacl_data/lung_cancer_kg_schema.ttl",
   "Turtle"
 );
 
+// Import INSTANCES (patients, treatments, etc.)
+// This creates the actual relationships between entities
 CALL n10s.rdf.import.fetch(
   "file:///H:/akash/git/CoherencePLM/version26/experiments/GraphDBExperiments/VER1/5.Python_ontodriven_kgraph/ouput/lung_cancer_instances_out.ttl",
   "Turtle"
 );
+
+// Verify relationships were created (should see actual relationship types, not ObjectProperty nodes)
+MATCH (p:ns0__Patient)-[r]->(t)
+RETURN type(r) AS RelationshipType, count(*) AS Count
+ORDER BY Count DESC LIMIT 10;
 
 // OR Import from GitHub
 // CALL n10s.rdf.import.fetch(
@@ -84,7 +129,72 @@ RETURN path
 LIMIT 50;
 
 // ========================================
-// 5. OPTIONAL CLEANUP
+// STEP 6: SHACL VALIDATION IN NEO4J
+// ========================================
+
+// Import SHACL shapes
+CALL n10s.validation.shacl.import.fetch(
+  "file:///H:/akash/git/CoherencePLM/version26/experiments/GraphDBExperiments/VER1/5.Python_ontodriven_kgraph/ttl_shacl_data/lung_cancer_shacl_shapes.ttl",
+  "Turtle"
+);
+
+// Validate the graph
+CALL n10s.validation.shacl.validate()
+YIELD focusNode, nodeType, resultMessage, severity
+RETURN n10s.rdf.getIRILocalName(severity) AS Severity,
+       count(*) AS Count
+GROUP BY severity
+ORDER BY Severity;
+
+// Get detailed violations
+CALL n10s.validation.shacl.validate()
+YIELD focusNode, resultMessage, severity, offendingValue
+WHERE severity = 'http://www.w3.org/ns/shacl#Violation'
+RETURN n10s.rdf.getIRILocalName(focusNode) AS Node,
+       resultMessage AS Error,
+       offendingValue AS InvalidValue
+LIMIT 20;
+
+// See NEO4J_SHACL_VALIDATION.md for more details
+
+
+// ========================================
+// STEP 7: EXAMPLE CYPHER QUERIES
+// ========================================
+
+// Q1: All patients with age and stage
+MATCH (p:ns0__Patient)-[:ns0__hasStage]->(s:ns0__Stage)
+RETURN p.rdfs__label AS Patient,
+       p.ns0__age AS Age,
+       s.rdfs__label AS Stage
+ORDER BY p.ns0__age;
+
+// Q2: Treatment outcomes
+MATCH (p:ns0__Patient)-[:ns0__receivedTherapy]->(t:ns0__Therapy)-[:ns0__usesDrug]->(d:ns0__Drug),
+      (p)-[:ns0__hasOutcome]->(o:ns0__Outcome)
+RETURN p.rdfs__label AS Patient,
+       d.rdfs__label AS Drug,
+       o.rdfs__label AS Outcome;
+
+// Q3: Biomarker distribution
+MATCH (p:ns0__Patient)-[:ns0__testedForBiomarker]->(b:ns0__Biomarker)
+RETURN b.rdfs__label AS Biomarker,
+       count(p) AS PatientCount
+ORDER BY PatientCount DESC;
+
+// Q4: EGFR+ patients
+MATCH (p:ns0__Patient)-[:ns0__testedForBiomarker]->(b:ns0__Biomarker),
+      (p)-[:ns0__receivedTherapy]->(t:ns0__Therapy)-[:ns0__usesDrug]->(d:ns0__Drug)
+WHERE b.rdfs__label CONTAINS "EGFR"
+RETURN p.rdfs__label AS Patient,
+       p.ns0__age AS Age,
+       d.rdfs__label AS Drug;
+
+// See SPARQL_CYPHER_QUERIES.md for SPARQL equivalents
+
+
+// ========================================
+// STEP 8: OPTIONAL CLEANUP
 // ========================================
 
 // Add simplified name property
@@ -103,8 +213,8 @@ REMOVE n:Resource;
 
 // Define category relationships
 MERGE (from:_Category {name:"CancerPatient"})
-MERGE (to:_Category {name:"LungCancer"})
-MERGE (from)<-[:_from]-(r:_Relationship {name:"ns0__diagnosedWith"})-[:_to]->(to);
+MERGE (to:_Category {name:"Gene"})
+MERGE (from)<-[:_from]-(r:_Relationship {name:"hasGene"})-[:_to]->(to);
 
 // Apply category labels to nodes based on relationships
 MATCH (from:_Category)<-[:_from]-(r:_Relationship)-[:_to]->(to:_Category)
@@ -160,6 +270,37 @@ CALL apoc.periodic.truncate({ dropSchema: true });
 
 // 4. Re-import with correct config
 // ... run import queries from above ...
+
+
+// ========================================
+// TROUBLESHOOTING
+// ========================================
+
+// PROBLEM: Seeing ObjectProperty nodes instead of relationships?
+// 
+// Run this to check:
+MATCH (n:ObjectProperty) RETURN n.name LIMIT 10;
+
+// If you see results like "ontology#usesDrug", "ontology#hasStage", etc:
+// 
+// ROOT CAUSE: The instances TTL file contained schema definitions,
+//             creating duplicate schema nodes when you import both files
+//
+// SOLUTION:
+// 1. Run ETL again: python lung_cancer_etl_engine.py
+//    (Now fixed - no longer includes schema in instances)
+// 2. Clear Neo4j and re-import both files
+// 3. Verify relationships with query below
+
+// VERIFY: Should see actual relationship types
+MATCH (p:ns0__Patient)-[r]->(t)
+RETURN type(r) AS RelationshipType, labels(t) AS TargetType, count(*) AS Count
+ORDER BY Count DESC LIMIT 15;
+
+// Should see results like:
+// ns0__receivedTherapy, [ns0__Therapy], 45
+// ns0__testedForBiomarker, [ns0__Biomarker], 38
+// NOT: ObjectProperty nodes
 
 
 // ========================================
