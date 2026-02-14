@@ -2,7 +2,7 @@
 CALL apoc.periodic.truncate({ dropSchema: true });
 
 
-3. Connect to your database and either from the browser or the console and run the following:
+ Connect to your database and either from the browser or the console and run the following:
 
     1. Create a uniqueness constraint on Resources' uri by running the following cypher fragment:
         ```cypher
@@ -16,6 +16,18 @@ CALL apoc.periodic.truncate({ dropSchema: true });
         ```cypher
         CALL n10s.graphconfig.init({ handleVocabUris: "IGNORE" });
         ```
+
+OR 
+
+            CALL n10s.graphconfig.init({
+      handleVocabUris: "MAP",           // ✅ NOT "IGNORE"!
+      handleMultival: "ARRAY",
+      handleRDFTypes: "LABELS",
+      applyNeo4jNaming: true,
+      keepLangTag: false,
+      keepCustomDataTypes: false
+    });
+
     3. Import the RDF files. Note that there is an absolute path to the location on your drive where you downloaded the files
     
 
