@@ -124,11 +124,11 @@
 # Datatype Properties
 #################################################
 
-:uri rdf:type owl:DatatypeProperty ;
+:sourceUrl rdf:type owl:DatatypeProperty ;
     rdfs:domain :Article ;
     rdfs:range xsd:string ;
-    rdfs:label "URI" ;
-    rdfs:comment "Article URI or URL" .
+    rdfs:label "source URL" ;
+    rdfs:comment "Article source URL or URI" .
 
 :title rdf:type owl:DatatypeProperty ;
     rdfs:domain :Article ;

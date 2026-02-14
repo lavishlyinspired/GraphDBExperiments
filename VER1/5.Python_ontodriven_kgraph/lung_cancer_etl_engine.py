@@ -97,7 +97,7 @@ for section_name, section in config.items():
             
             # Special handling for articles: add original URI as property
             if section["type"] == "Article" and "uri" in row:
-                g.add((subj, ONT["uri"], Literal(row["uri"])))
+                g.add((subj, ONT["sourceUrl"], Literal(row["uri"])))
             
             cypher_lines.append(
                 f"MERGE (n:{section['type']} {{id:'{subj.split('/')[-1]}'}})"
@@ -106,10 +106,10 @@ for section_name, section in config.items():
                 f"SET n.label='{subj_label}'"
             )
             
-            # Add URI to cypher for articles
+            # Add source URL to cypher for articles
             if section["type"] == "Article" and "uri" in row:
                 cypher_lines.append(
-                    f"SET n.uri='{row['uri']}'"
+                    f"SET n.sourceUrl='{row['uri']}'"
                 )
 
         # datatype properties

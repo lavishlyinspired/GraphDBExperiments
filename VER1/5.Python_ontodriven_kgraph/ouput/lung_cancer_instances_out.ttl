@@ -13,8 +13,8 @@ res:Article_PMC4971274 a ont:Article ;
         res:Histology_Squamous_Cell_Carcinoma,
         res:Stage_IIIA,
         res:Therapy_Lobectomy ;
-    ont:title "A case of three synchronous primary lung cancers within the same lung lobe" ;
-    ont:uri "https://pmc.ncbi.nlm.nih.gov/articles/PMC4971274/" .
+    ont:sourceUrl "https://pmc.ncbi.nlm.nih.gov/articles/PMC4971274/" ;
+    ont:title "A case of three synchronous primary lung cancers within the same lung lobe" .
 
 res:Article_PMC7919120 a ont:Article ;
     rdfs:label "" ;
@@ -29,8 +29,8 @@ res:Article_PMC7919120 a ont:Article ;
         res:Therapy_Surgery,
         res:Therapy_Thoracoscopic,
         res:Therapy_Vats ;
-    ont:title "Synchronous triple primary lung cancer with three different histological subtypes" ;
-    ont:uri "https://pmc.ncbi.nlm.nih.gov/articles/PMC7919120/" .
+    ont:sourceUrl "https://pmc.ncbi.nlm.nih.gov/articles/PMC7919120/" ;
+    ont:title "Synchronous triple primary lung cancer with three different histological subtypes" .
 
 res:Article_PMC8854358 a ont:Article ;
     rdfs:label "" ;
@@ -40,8 +40,8 @@ res:Article_PMC8854358 a ont:Article ;
     ont:refersTo res:Histology_Adenocarcinoma,
         res:Therapy_Lobectomy,
         res:Therapy_Surgery ;
-    ont:title "Case Report: Combined Small Cell Lung Carcinoma with Adenocarcinoma" ;
-    ont:uri "https://pmc.ncbi.nlm.nih.gov/articles/PMC8854358/" .
+    ont:sourceUrl "https://pmc.ncbi.nlm.nih.gov/articles/PMC8854358/" ;
+    ont:title "Case Report: Combined Small Cell Lung Carcinoma with Adenocarcinoma" .
 
 res:Article_PMC9392234 a ont:Article ;
     rdfs:label "" ;
@@ -54,8 +54,8 @@ res:Article_PMC9392234 a ont:Article ;
         res:Therapy_Chemoradiation,
         res:Therapy_Stereotactic_Radiosurgery,
         res:Therapy_Surgery ;
-    ont:title "Triple primary lung cancer: a case report" ;
-    ont:uri "https://pmc.ncbi.nlm.nih.gov/articles/PMC9392234/" .
+    ont:sourceUrl "https://pmc.ncbi.nlm.nih.gov/articles/PMC9392234/" ;
+    ont:title "Triple primary lung cancer: a case report" .
 
 res:Article_PMC9641134 a ont:Article ;
     rdfs:label "" ;
@@ -71,8 +71,8 @@ res:Article_PMC9641134 a ont:Article ;
         res:Test_Biopsy,
         res:Test_Pet-Ct,
         res:Therapy_Chemotherapy ;
-    ont:title "Pulmonary combined small cell carcinoma and enteric adenocarcinoma" ;
-    ont:uri "https://pmc.ncbi.nlm.nih.gov/articles/PMC9641134/" .
+    ont:sourceUrl "https://pmc.ncbi.nlm.nih.gov/articles/PMC9641134/" ;
+    ont:title "Pulmonary combined small cell carcinoma and enteric adenocarcinoma" .
 
 res:Patient_P001 a ont:Patient ;
     rdfs:label "Patient P001" ;
